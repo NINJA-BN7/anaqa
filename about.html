@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="uz" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TITAN FORGE | Ultra Men's Fitness Club & Performance Lab</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome 6.5.1 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts: Teko & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Teko:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        titan: {
+                            bg: '#0B0F19',        // Deep Obsidian Background
+                            cardBg: '#111827',    // Dark Surface
+                            cardBorder: 'rgba(255, 255, 255, 0.08)',
+                            neon: '#CCFF00',      // Neon Lime Accent
+                            neonDark: '#A6D900',
+                            cyan: '#00F0FF',      // Electric Cyan Accent
+                            gold: '#FFD700',      // Ultra VIP Gold Glow
+                            darkPanel: 'rgba(17, 24, 39, 0.75)'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Teko', 'sans-serif'],
+                        body: ['Inter', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'neon-glow': '0 0 35px rgba(204, 255, 0, 0.3)',
+                        'cyan-glow': '0 0 35px rgba(0, 240, 255, 0.3)',
+                        'gold-glow': '0 0 40px rgba(255, 215, 0, 0.35)',
+                        'glass-shadow': '0 25px 50px -12px rgba(0, 0, 0, 0.7)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0B0F19;
+            color: #F3F4F6;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .font-heading {
+            font-family: 'Teko', sans-serif;
+            letter-spacing: 0.05em;
+        }
+
+        /* Glassmorphism Panel */
+        .glass-panel {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(204, 255, 0, 0.4);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(204, 255, 0, 0.15);
+        }
+
+        /* Carbon Texture Pattern */
+        .carbon-bg {
+            background-color: #0B0F19;
+            background-image: radial-gradient(rgba(204, 255, 0, 0.1) 1px, transparent 1px), radial-gradient(rgba(0, 240, 255, 0.08) 1px, #0B0F19 1px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+        }
+
+        .text-neon-gradient {
+            background: linear-gradient(135deg, #CCFF00 0%, #00F0FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-gold-gradient {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B0F19;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1F2937;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #CCFF00;
+        }
+
+        /* SPA Page View Switching */
+        .spa-view {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.35s ease-in-out;
+        }
+
+        .spa-view.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Animated Pulse Orbs */
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.25; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
+        }
+        .pulse-glow {
+            animation: pulseGlow 6s infinite ease-in-out;
+        }
+
+        /* Toast Animation */
+        @keyframes slideInRight {
+            from { transform: translateX(120%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        .toast-slide-in {
+            animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-titan-neon selection:text-black carbon-bg">
+
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-white/10 bg-black/70 backdrop-blur-2xl" id="mainHeader">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Brand Logo -->
+                <a href="#home" onclick="navigateTo('home')" class="flex items-center gap-3.5 group">
+                    <div class="w-12 h-12 rounded-xl bg-titan-neon flex items-center justify-center text-black font-extrabold text-2xl shadow-neon-glow group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div>
+                        <span class="font-heading text-3xl font-extrabold tracking-wider text-white block leading-none">TITAN<span class="text-titan-neon">FORGE</span></span>
+                        <span class="text-[9px] text-gray-400 font-bold tracking-[0.25em] uppercase block mt-0.5">PERFORMANCE LAB & CLUB</span>
+                    </div>
+                </a>
+
+                <!-- Desktop SPA Navigation Tabs -->
+                <nav class="hidden md:flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 backdrop-blur-md">
+                    <button onclick="navigateTo('home')" id="nav-home" class="nav-btn px-6 py-2 rounded-full text-xs font-bold transition-all text-titan-neon bg-white/10 shadow-sm uppercase tracking-wider">
+                        <i class="fa-solid fa-house-chimney mr-2"></i>Asosiy
+                    </button>
+                    <button onclick="navigateTo('programs')" id="nav-programs" class="nav-btn px-6 py-2 rounded-full text-xs font-bold transition-all text-gray-300 hover:text-white hover:bg-white/5 uppercase tracking-wider">
+                        <i class="fa-solid fa-bolt mr-2"></i>Dasturlar & Jadval
+                    </button>
+                    <button onclick="navigateTo('pricing')" id="nav-pricing" class="nav-btn px-6 py-2 rounded-full text-xs font-bold transition-all text-gray-300 hover:text-white hover:bg-white/5 uppercase tracking-wider">
+                        <i class="fa-solid fa-tag mr-2"></i>Tariflar & Kalkulyator
+                    </button>
+                </nav>
+
+                <!-- Header Action Button -->
+                <div class="hidden lg:flex items-center gap-4">
+                    <button onclick="selectPlanAndScroll('VIP Ultra Pass')" class="relative inline-flex items-center justify-center px-7 py-3 text-xs font-black text-black transition-all bg-titan-neon rounded-full hover:bg-titan-neonDark shadow-neon-glow hover:scale-105 active:scale-95 uppercase tracking-widest">
+                        <span>VIP A'ZOLIK</span>
+                        <i class="fa-solid fa-arrow-right-long ml-2 text-xs"></i>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="p-3 rounded-xl bg-white/5 border border-white/10 text-gray-200 hover:text-titan-neon focus:outline-none">
+                        <i class="fa-solid fa-bars-staggered text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobileMenu" class="hidden md:hidden glass-panel border-b border-white/10 px-5 pt-4 pb-8 space-y-3 transition-all duration-300">
+            <button onclick="navigateTo('home'); toggleMobileMenu()" class="w-full text-left px-5 py-3.5 rounded-xl text-sm font-bold text-white hover:bg-white/10 flex items-center gap-3">
+                <i class="fa-solid fa-house-chimney text-titan-neon"></i> Asosiy Sahifa
+            </button>
+            <button onclick="navigateTo('programs'); toggleMobileMenu()" class="w-full text-left px-5 py-3.5 rounded-xl text-sm font-bold text-white hover:bg-white/10 flex items-center gap-3">
+                <i class="fa-solid fa-bolt text-titan-neon"></i> Dasturlar & Jadval
+            </button>
+            <button onclick="navigateTo('pricing'); toggleMobileMenu()" class="w-full text-left px-5 py-3.5 rounded-xl text-sm font-bold text-white hover:bg-white/10 flex items-center gap-3">
+                <i class="fa-solid fa-tag text-titan-neon"></i> Tariflar & Kalkulyator
+            </button>
+            <div class="pt-3">
+                <button onclick="selectPlanAndScroll('Sinov Mashg\'uloti'); toggleMobileMenu()" class="w-full py-4 text-center font-black text-black bg-titan-neon rounded-xl shadow-neon-glow uppercase text-xs tracking-widest">
+                    BEPUL SINOVGA YOZILISH
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-20 min-h-screen">
+
+        <!-- ========================================================= -->
+        <!-- VIEW 1: HOME & EXPERIENCE (#home)                         -->
+        <!-- ========================================================= -->
+        <div id="view-home" class="spa-view active">
+            
+            <!-- Hero Section -->
+            <section class="relative min-h-[92vh] flex items-center justify-center overflow-hidden py-20">
+                <!-- Glowing Orb Background Accent -->
+                <div class="absolute top-1/4 left-1/5 w-[500px] h-[500px] bg-titan-neon/15 rounded-full blur-[150px] pointer-events-none pulse-glow"></div>
+                <div class="absolute bottom-1/4 right-1/5 w-[500px] h-[500px] bg-titan-cyan/15 rounded-full blur-[150px] pointer-events-none pulse-glow" style="animation-delay: 3s;"></div>
+
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+                    <div class="grid lg:grid-cols-12 gap-12 items-center">
+                        
+                        <!-- Left Banner Column -->
+                        <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                            <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full glass-panel border border-titan-neon/40 text-titan-neon text-xs font-black tracking-widest uppercase">
+                                <span class="w-2.5 h-2.5 rounded-full bg-titan-neon animate-ping"></span>
+                                2026 EDITION | ULTRA PERFORMANCE LAB
+                            </div>
+
+                            <h1 class="font-heading text-5xl sm:text-7xl xl:text-8xl font-black uppercase leading-[0.95] tracking-tight">
+                                INTENSIV KUCH. <br>
+                                <span class="text-neon-gradient">MUTLAQ ULUG'VORLIK.</span> <br>
+                                TITAN FORGE A'ZOSI BO'L.
+                            </h1>
+
+                            <p class="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                                Toshkent markazidagi eng zamonaviy bio-monitoring, Italiya Eleiko va Technogym og'ir atletika zonalari hamda professional murabbiylar akademiyasi.
+                            </p>
+
+                            <!-- CTAs -->
+                            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                                <button onclick="navigateTo('pricing')" class="w-full sm:w-auto px-9 py-4 rounded-2xl font-black bg-titan-neon text-black hover:bg-titan-neonDark shadow-neon-glow transition-all hover:scale-105 text-xs uppercase tracking-widest flex items-center justify-center gap-3">
+                                    <span>A'ZOLIK TARIFLARI</span>
+                                    <i class="fa-solid fa-fire text-sm"></i>
+                                </button>
+                                <button onclick="navigateTo('programs')" class="w-full sm:w-auto px-9 py-4 rounded-2xl font-black glass-panel border border-white/20 hover:bg-white/10 text-white transition-all text-xs uppercase tracking-widest flex items-center justify-center gap-3">
+                                    <i class="fa-solid fa-play text-titan-neon text-xs"></i>
+                                    <span>DASTURLARNI TADQIQ QILISH</span>
+                                </button>
+                            </div>
+
+                            <!-- Social Proof -->
+                            <div class="pt-8 border-t border-white/10 flex items-center justify-center lg:justify-start gap-8">
+                                <div class="flex -space-x-3">
+                                    <img class="w-12 h-12 rounded-full border-2 border-titan-bg object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80" alt="Member">
+                                    <img class="w-12 h-12 rounded-full border-2 border-titan-bg object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80" alt="Member">
+                                    <img class="w-12 h-12 rounded-full border-2 border-titan-bg object-cover" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&auto=format&fit=crop&q=80" alt="Member">
+                                    <div class="w-12 h-12 rounded-full border-2 border-titan-bg bg-titan-cardBg flex items-center justify-center text-xs font-black text-titan-neon">+1.5k</div>
+                                </div>
+                                <div class="text-left">
+                                    <div class="flex items-center gap-1 text-yellow-400 text-xs">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <span class="text-white font-bold ml-1.5">4.98 / 5</span>
+                                    </div>
+                                    <p class="text-xs text-gray-400">Atletlar va a'zolarimizning yuksak bahosi</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Banner Image Card -->
+                        <div class="lg:col-span-5 relative">
+                            <div class="relative mx-auto max-w-md lg:max-w-none">
+                                <div class="absolute -inset-1.5 rounded-3xl bg-gradient-to-r from-titan-neon to-titan-cyan opacity-40 blur-2xl"></div>
+                                <div class="relative rounded-3xl overflow-hidden border border-white/10 glass-panel">
+                                    <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=900&auto=format&fit=crop&q=80" alt="Titan Forge Gym" class="w-full h-[520px] object-cover filter brightness-90">
+                                    
+                                    <!-- Floating Overlay Card -->
+                                    <div class="absolute bottom-6 left-6 right-6 p-5 rounded-2xl glass-panel border border-white/15 flex items-center justify-between">
+                                        <div class="flex items-center gap-4">
+                                            <div class="w-12 h-12 rounded-xl bg-titan-neon/20 border border-titan-neon/50 flex items-center justify-center text-titan-neon text-2xl shadow-neon-glow">
+                                                <i class="fa-solid fa-heart-pulse"></i>
+                                            </div>
+                                            <div>
+                                                <p class="text-xs text-gray-400 font-medium">Kanalizatsiyalangan Havolantirish</p>
+                                                <p class="text-base font-bold text-white">HEPA 13 Air Pure System</p>
+                                            </div>
+                                        </div>
+                                        <span class="text-[10px] font-black px-3 py-1 rounded-full bg-titan-cyan/20 text-titan-cyan border border-titan-cyan/40 uppercase">100% OXYGEN</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-12 border-y border-white/10 bg-black/40 relative">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                        <div class="p-4">
+                            <div class="font-heading text-5xl sm:text-6xl font-black text-titan-neon mb-1"><span class="counter" data-target="1500">0</span>+</div>
+                            <p class="text-gray-400 text-xs font-bold uppercase tracking-wider">Faol Klub A'zolari</p>
+                        </div>
+                        <div class="p-4">
+                            <div class="font-heading text-5xl sm:text-6xl font-black text-white mb-1"><span class="counter" data-target="12">0</span>+</div>
+                            <p class="text-gray-400 text-xs font-bold uppercase tracking-wider">Xalqaro Murabbiylar</p>
+                        </div>
+                        <div class="p-4">
+                            <div class="font-heading text-5xl sm:text-6xl font-black text-titan-cyan mb-1"><span class="counter" data-target="3500">0</span> m²</div>
+                            <p class="text-gray-400 text-xs font-bold uppercase tracking-wider">Klub Maydoni</p>
+                        </div>
+                        <div class="p-4">
+                            <div class="font-heading text-5xl sm:text-6xl font-black text-white mb-1">24/7</div>
+                            <p class="text-gray-400 text-xs font-bold uppercase tracking-wider">Uzluksiz Kirish</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Grid -->
+            <section class="py-24 relative">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-3xl mx-auto mb-16">
+                        <span class="text-titan-neon font-extrabold text-xs tracking-widest uppercase">EKSKLUSIV AFZALLIKLAR</span>
+                        <h2 class="font-heading text-4xl sm:text-6xl font-black text-white uppercase mt-1">TITAN FORGE STANDARTLARI</h2>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="glass-card p-8 rounded-3xl relative group">
+                            <div class="w-14 h-14 rounded-2xl bg-titan-neon/10 border border-titan-neon/30 flex items-center justify-center text-titan-neon text-2xl mb-6 group-hover:bg-titan-neon group-hover:text-black transition-all">
+                                <i class="fa-solid fa-dumbbell"></i>
+                            </div>
+                            <h3 class="font-heading text-2xl font-bold text-white mb-2">Eleiko & Technogym Italiya</h3>
+                            <p class="text-gray-400 text-xs leading-relaxed">Olimpiya o'yinlari sertifikatiga ega shtangalar va biomexanik trenajyorlar bilan jihozlangan zal.</p>
+                        </div>
+
+                        <div class="glass-card p-8 rounded-3xl relative group">
+                            <div class="w-14 h-14 rounded-2xl bg-titan-cyan/10 border border-titan-cyan/30 flex items-center justify-center text-titan-cyan text-2xl mb-6 group-hover:bg-titan-cyan group-hover:text-black transition-all">
+                                <i class="fa-solid fa-temperature-arrow-up"></i>
+                            </div>
+                            <h3 class="font-heading text-2xl font-bold text-white mb-2">Fin Saunasi & Kriyoterapiya</h3>
+                            <p class="text-gray-400 text-xs leading-relaxed">Intensiv mashg'ulotdan so'ng mushaklardagi mikrotravmalarni va charchoqni lahzada yo'qotuvchi SPA zona.</p>
+                        </div>
+
+                        <div class="glass-card p-8 rounded-3xl relative group">
+                            <div class="w-14 h-14 rounded-2xl bg-titan-neon/10 border border-titan-neon/30 flex items-center justify-center text-titan-neon text-2xl mb-6 group-hover:bg-titan-neon group-hover:text-black transition-all">
+                                <i class="fa-solid fa-chart-line"></i>
+                            </div>
+                            <h3 class="font-heading text-2xl font-bold text-white mb-2">Bio-Scanner InBody 770</h3>
+                            <p class="text-gray-400 text-xs leading-relaxed">Tana tarkibidagi yog', mushak, suv hamda viskeral yog' darajasini 99% aniqlikda tahlil qiluvchi diagnostika.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials Carousel/Grid & FAQ Section -->
+            <section class="py-20 border-t border-white/10 bg-black/40">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-3xl mx-auto mb-16">
+                        <span class="text-titan-cyan font-extrabold text-xs tracking-widest uppercase">SAVOLLAR & FIKRLAR</span>
+                        <h2 class="font-heading text-4xl sm:text-6xl font-black text-white uppercase mt-1">ATLETLAR AYYAMASI VA KO'P SORAALADIGAN SAVOLLAR</h2>
+                    </div>
+
+                    <div class="grid lg:grid-cols-12 gap-12">
+                        <!-- FAQs Accordion Left -->
+                        <div class="lg:col-span-7 space-y-4">
+                            <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                                <i class="fa-solid fa-circle-question text-titan-neon"></i> FAQ — Ko'p beriladigan savollar
+                            </h3>
+
+                            <div class="glass-panel rounded-2xl overflow-hidden border border-white/10">
+                                <button onclick="toggleFaq('faq-1')" class="w-full p-5 text-left font-bold text-sm text-white flex justify-between items-center hover:bg-white/5 transition-colors">
+                                    <span>Zalga kirish va saunadan foydalanish qoidalari qanday?</span>
+                                    <i id="faq-icon-1" class="fa-solid fa-chevron-down text-titan-neon transition-transform"></i>
+                                </button>
+                                <div id="faq-1" class="hidden p-5 pt-0 text-xs text-gray-400 leading-relaxed border-t border-white/5">
+                                    Barcha a'zolik paketlarimiz smart-card va yuzni tanish (Face-ID) tizimi orqali ishlaydi. PRO va VIP tarif a'zolari Fin saunasi va SPA zonalaridan vaqt cheklovisiz foydalanishlari mumkin.
+                                </div>
+                            </div>
+
+                            <div class="glass-panel rounded-2xl overflow-hidden border border-white/10">
+                                <button onclick="toggleFaq('faq-2')" class="w-full p-5 text-left font-bold text-sm text-white flex justify-between items-center hover:bg-white/5 transition-colors">
+                                    <span>Shaxsiy murabbiy tarif ichiga kiradimi?</span>
+                                    <i id="faq-icon-2" class="fa-solid fa-chevron-down text-titan-neon transition-transform"></i>
+                                </button>
+                                <div id="faq-2" class="hidden p-5 pt-0 text-xs text-gray-400 leading-relaxed border-t border-white/5">
+                                    Har bir yangi a'zo uchun 1 ta bepul introductory dars va InBody diagnostikasi taqdim etiladi. PRO VIP GOLD tariflarida shaxsiy murabbiy xizmati to'liq qamrab olingan.
+                                </div>
+                            </div>
+
+                            <div class="glass-panel rounded-2xl overflow-hidden border border-white/10">
+                                <button onclick="toggleFaq('faq-3')" class="w-full p-5 text-left font-bold text-sm text-white flex justify-between items-center hover:bg-white/5 transition-colors">
+                                    <span>Avtoturargoh va shaxsiy shkafchalar bormi?</span>
+                                    <i id="faq-icon-3" class="fa-solid fa-chevron-down text-titan-neon transition-transform"></i>
+                                </button>
+                                <div id="faq-3" class="hidden p-5 pt-0 text-xs text-gray-400 leading-relaxed border-t border-white/5">
+                                    Ha, 120 ta avtomobilga mo'ljallangan qo'riqlanadigan bepul parkovka hamda Smart Locker elektron shkaflari a'zolarimiz xizmatida.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonials Grid Right -->
+                        <div class="lg:col-span-5 space-y-4">
+                            <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                                <i class="fa-solid fa-quote-left text-titan-cyan"></i> A'zolarimiz sharhlari
+                            </h3>
+
+                            <div class="glass-card p-6 rounded-2xl">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" class="w-10 h-10 rounded-full object-cover border border-titan-neon" alt="Jasur">
+                                    <div>
+                                        <h4 class="text-sm font-bold text-white">Jasur Alimov</h4>
+                                        <p class="text-[10px] text-titan-neon">PRO UNLIMITED A'ZO</p>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-gray-300 italic">"Gimnastika va og'ir atletika uskunalari zo'r darajada. Technogym trenajyorlari judayam qulay va saunasi ajoyib."</p>
+                            </div>
+
+                            <div class="glass-card p-6 rounded-2xl">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80" class="w-10 h-10 rounded-full object-cover border border-titan-cyan" alt="Timur">
+                                    <div>
+                                        <h4 class="text-sm font-bold text-white">Timur Sharipov</h4>
+                                        <p class="text-[10px] text-titan-cyan">VIP GOLD A'ZO</p>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-gray-300 italic">"Crossfit zonasi juda keng. Murabbiy Davron aka bilan 3 oyda 12 kg yog' tashlab, mushak massasi to'pladim!"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- VIEW 2: PROGRAMS, TRAINERS & TIMETABLE (#programs)        -->
+        <!-- ========================================================= -->
+        <div id="view-programs" class="spa-view">
+            <section class="py-12">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    
+                    <div class="text-center max-w-3xl mx-auto mb-12">
+                        <span class="text-titan-neon font-extrabold text-xs uppercase tracking-widest">MASHG'ULOT YO'NALISHLARI</span>
+                        <h1 class="font-heading text-4xl sm:text-6xl font-black text-white uppercase mt-1">PROFESSIONAL MASHG'ULOT DASTURLARI</h1>
+                        <p class="text-gray-400 text-xs sm:text-sm mt-2">Maqsadingizga eng mos intensivlik darajasini tanlang</p>
+                    </div>
+
+                    <!-- Category Filter Buttons -->
+                    <div class="flex items-center justify-center gap-2 flex-wrap mb-12" id="programFilters">
+                        <button onclick="filterPrograms('all')" class="prog-filter active px-6 py-2.5 rounded-full text-xs font-black bg-titan-neon text-black shadow-neon-glow uppercase tracking-wider transition-all">
+                            BARCHASI
+                        </button>
+                        <button onclick="filterPrograms('powerlifting')" class="prog-filter px-6 py-2.5 rounded-full text-xs font-black glass-panel text-gray-300 hover:text-white uppercase tracking-wider transition-all">
+                            Powerlifting & Kuch
+                        </button>
+                        <button onclick="filterPrograms('crossfit')" class="prog-filter px-6 py-2.5 rounded-full text-xs font-black glass-panel text-gray-300 hover:text-white uppercase tracking-wider transition-all">
+                            CrossFit Arena
+                        </button>
+                        <button onclick="filterPrograms('combat')" class="prog-filter px-6 py-2.5 rounded-full text-xs font-black glass-panel text-gray-300 hover:text-white uppercase tracking-wider transition-all">
+                            Boks & MMA
+                        </button>
+                        <button onclick="filterPrograms('cardio')" class="prog-filter px-6 py-2.5 rounded-full text-xs font-black glass-panel text-gray-300 hover:text-white uppercase tracking-wider transition-all">
+                            HIIT & Fat Burn
+                        </button>
+                    </div>
+
+                    <!-- Programs Cards Grid -->
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24" id="programsGrid">
+                        
+                        <!-- Prog 1 -->
+                        <div class="prog-card glass-card rounded-3xl overflow-hidden flex flex-col justify-between" data-category="powerlifting">
+                            <div>
+                                <div class="relative h-60 overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=800&auto=format&fit=crop&q=80" alt="Titan Heavy Lifting" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                                    <span class="absolute top-4 left-4 bg-black/80 backdrop-blur-md text-titan-neon text-[10px] font-black px-3.5 py-1.5 rounded-full border border-titan-neon/40 uppercase">
+                                        POWERLIFTING & KUCH
+                                    </span>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="font-heading text-2xl font-bold text-white mb-2">Titan Heavy Hypertrophy</h3>
+                                    <p class="text-gray-400 text-xs mb-6 leading-relaxed">Maksimal kuch ko'rsatkichlarini oshirish hamda relyefli va simmetrik mushak shakllantirish.</p>
+                                    
+                                    <div class="grid grid-cols-3 gap-2 py-3 border-y border-white/10 text-center mb-4">
+                                        <div>
+                                            <span class="block text-[10px] text-gray-400 uppercase">Intensivlik</span>
+                                            <span class="text-xs font-extrabold text-titan-neon">10 / 10</span>
+                                        </div>
+                                        <div>
+                                            <span class="block text-[10px] text-gray-400 uppercase">Kaloriya</span>
+                                            <span class="text-xs font-extrabold text-white">850 kkal</span>
+                                        </div>
+                                        <div>
+                                            <span class="block text-[10px] text-gray-400 uppercase">Davomiyligi</span>
+                                            <span class="text-xs font-extrabold text-white">90 daqiqa</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="px-6 pb-6">
+                                <button onclick="selectPlanAndScroll('Titan Heavy Hypertrophy')" class="w-full py-3.5 rounded-xl font-extrabold bg-white/10 text-white hover:bg-titan-neon hover:text-black transition-all flex items-center justify-center gap-2 text-xs uppercase tracking-wider">
+                                    <span>YOZILISH</span>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Prog 2 -->
+                        <div class="prog-card glass-card rounded-3xl overflow-hidden flex flex-col justify-between" data-category="crossfit">
+                            <div>
+                                <div class="relative h-60 overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=800&auto=format&fit=crop&q=80" alt="CrossFit WOD" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                                    <span class="absolute top-4 left-4 bg-black/80 backdrop-blur-md text-titan-cyan text-[10px] font-black px-3.5 py-1.5 rounded-full border border-titan-cyan/40 uppercase">
+                                        CROSSFIT ARENA
+                                    </span>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="font-heading text-2xl font-bold text-white mb-2">Alpha Functional CrossFit WOD</h3>
+                                    <p class="text-gray-400 text-xs mb-6 leading-relaxed">Portlovchi kuch va chidamlilikni rivojlantiruvchi yuqori intensivlikdagi kombo mashqlar.</p>
+                                    
+                                    <div class="grid grid-cols-3 gap-2 py-3 border-y border-white/10 text-center mb-4">
+                                        <div>
+                                            <span class="block text-[10px] text-gray-400 uppercase">Intensivlik</span>
+                                            <span class="text-xs font-extrabold text-titan-cyan">9.5 / 10</span>
+                                        </div>
+                                        <div>
+                                            <span class="block text-[10px] text-gray-400 uppercase">Kaloriya</span>
+                                            <span class="text-xs font-extrabold text-titan-neon">1100 kkal</span>
+                                        </div>
+                                        <div>
+                                            <span class="block text-[10px] text-gray-400 uppercase">Davomiyligi</span>
+                                            <span class="text-xs font-extrabold text-white">60 daqiqa</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="px-6 pb-6">
+                                <button onclick="selectPlanAndScroll('Alpha CrossFit WOD')" class="w-full py-3.5 rounded-xl font-extrabold bg-white/10 text-white hover:bg-titan-neon hover:text-black transition-all flex items-center justify-center gap-2 text-xs uppercase tracking-wider">
+                                    <span>YOZILISH</span>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Prog 3 -->
+                        <div class="prog-card glass-card rounded-3xl overflow-hidden flex flex-col justify-between" data-category="combat">
+                            <div>
+                                <div class="relative h-60 overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=800&auto=format&fit=crop&q=80" alt="Boxing Fight" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                                    <span class="absolute top-4 left-4 bg-black/80 backdrop-blur-md text-red-400 text-[10px] font-black px-3.5 py-1.5 rounded-full border border-red-400/40 uppercase">
+                                        BOKS & MMA
+                                    </span>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="font-heading text-2xl font-bold text-white mb-2">Pro Boxing & Kickboxing Fight</h3>
+                                    <p class="text-gray-400 text-xs mb-6 leading-relaxed">Professional ringda zarba berish texnikasi, oyoq harakatlari va jangovar chidamlilik.</p>
+                                    
+                                    <div class="grid grid-cols-3 gap-2 py-3 border-y border-white/10 text-center mb-4">
+                                        <div>
+                                            <span class="block text-[10px] text-gray-400 uppercase">Intensivlik</span>
+                                            <span class="text-xs font-extrabold text-red-400">9.0 / 10</span>
+                                        </div>
+                                        <div>
+                                            <span class="block text-[10px] text-gray-400 uppercase">Kaloriya</span>
+                                            <span class="text-xs font-extrabold text-titan-neon">950 kkal</span>
+                                        </div>
+                                        <div>
+                                            <span class="block text-[10px] text-gray-400 uppercase">Davomiyligi</span>
+                                            <span class="text-xs font-extrabold text-white">75 daqiqa</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="px-6 pb-6">
+                                <button onclick="selectPlanAndScroll('Pro Boxing')" class="w-full py-3.5 rounded-xl font-extrabold bg-white/10 text-white hover:bg-titan-neon hover:text-black transition-all flex items-center justify-center gap-2 text-xs uppercase tracking-wider">
+                                    <span>YOZILISH</span>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="border-t border-white/10 pt-16">
+                        <div class="text-center max-w-3xl mx-auto mb-10">
+                            <span class="text-titan-cyan font-extrabold text-xs uppercase tracking-widest">HAFTALIK MASHG'ULOTLAR</span>
+                            <h2 class="font-heading text-4xl sm:text-6xl font-black text-white uppercase mt-1">INTERAKTIV DARS JADVALI</h2>
+                        </div>
+
+                        <!-- Days Switcher Buttons -->
+                        <div class="flex justify-center gap-2 flex-wrap mb-8" id="scheduleDayTabs">
+                            <button onclick="renderTimetableDay('dushanba')" id="sday-dushanba" class="sday-btn px-5 py-2.5 rounded-xl text-xs font-black bg-titan-neon text-black shadow-neon-glow uppercase">Dushanba</button>
+                            <button onclick="renderTimetableDay('seshanba')" id="sday-seshanba" class="sday-btn px-5 py-2.5 rounded-xl text-xs font-black glass-panel text-gray-300 hover:text-white uppercase">Seshanba</button>
+                            <button onclick="renderTimetableDay('chorshanba')" id="sday-chorshanba" class="sday-btn px-5 py-2.5 rounded-xl text-xs font-black glass-panel text-gray-300 hover:text-white uppercase">Chorshanba</button>
+                            <button onclick="renderTimetableDay('payshanba')" id="sday-payshanba" class="sday-btn px-5 py-2.5 rounded-xl text-xs font-black glass-panel text-gray-300 hover:text-white uppercase">Payshanba</button>
+                            <button onclick="renderTimetableDay('juma')" id="sday-juma" class="sday-btn px-5 py-2.5 rounded-xl text-xs font-black glass-panel text-gray-300 hover:text-white uppercase">Juma</button>
+                            <button onclick="renderTimetableDay('shanba')" id="sday-shanba" class="sday-btn px-5 py-2.5 rounded-xl text-xs font-black glass-panel text-gray-300 hover:text-white uppercase">Shanba</button>
+                        </div>
+
+                        <!-- Table Area -->
+                        <div class="glass-panel rounded-3xl overflow-hidden border border-white/10">
+                            <div class="divide-y divide-white/10" id="scheduleRowsContainer">
+                                <!-- Dynamic Rows Injected by JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- VIEW 3: PRICING, BMI CALCULATOR & REGISTRATION (#pricing) -->
+        <!-- ========================================================= -->
+        <div id="view-pricing" class="spa-view">
+            <section class="py-12">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    
+                    <div class="mb-20 glass-panel p-8 sm:p-12 rounded-3xl border border-white/15 relative overflow-hidden">
+                        <div class="grid lg:grid-cols-12 gap-10 items-center">
+                            <div class="lg:col-span-5 space-y-4">
+                                <span class="text-titan-neon font-black text-xs uppercase tracking-widest">INNOVATSION DIAGNOSTIKA</span>
+                                <h2 class="font-heading text-4xl sm:text-5xl font-black text-white uppercase leading-none">BMI & KUNLIK KALORIYA KALKULYATORI</h2>
+                                <p class="text-gray-300 text-xs leading-relaxed">
+                                    O'z ko'rsatkichlaringizni kiriting hamda optimal kaloriya sarfi va mos mashg'ulot dasturi bo'yicha darhol tavsiya oling.
+                                </p>
+                            </div>
+
+                            <div class="lg:col-span-7">
+                                <div class="grid sm:grid-cols-3 gap-4 mb-4">
+                                    <div>
+                                        <label class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Bo'y (cm)</label>
+                                        <input type="number" id="calcHeight" value="182" class="w-full px-4 py-3 bg-black/60 border border-white/10 rounded-xl text-white font-mono text-xs focus:border-titan-neon focus:outline-none">
+                                    </div>
+                                    <div>
+                                        <label class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Vazn (kg)</label>
+                                        <input type="number" id="calcWeight" value="80" class="w-full px-4 py-3 bg-black/60 border border-white/10 rounded-xl text-white font-mono text-xs focus:border-titan-neon focus:outline-none">
+                                    </div>
+                                    <div>
+                                        <label class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Yosh</label>
+                                        <input type="number" id="calcAge" value="25" class="w-full px-4 py-3 bg-black/60 border border-white/10 rounded-xl text-white font-mono text-xs focus:border-titan-neon focus:outline-none">
+                                    </div>
+                                </div>
+
+                                <div class="mb-6">
+                                    <label class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Maqsadingiz</label>
+                                    <select id="calcGoal" class="w-full px-4 py-3 bg-black/60 border border-white/10 rounded-xl text-white text-xs focus:border-titan-neon focus:outline-none">
+                                        <option value="gain">Mushak hajmini oshirish (Muscle Hypertrophy)</option>
+                                        <option value="loss">Ortiqcha yog'larni yo'qotish (Fat Burn)</option>
+                                        <option value="endurance">Kuch va chidamlilikni rivojlantirish (Athletic Endurance)</option>
+                                    </select>
+                                </div>
+
+                                <button onclick="calculateFullFitnessStats()" class="w-full py-3.5 rounded-xl font-black bg-titan-neon text-black hover:bg-titan-neonDark shadow-neon-glow uppercase text-xs tracking-wider transition-all">
+                                    XISOB-KITOB QILISH
+                                </button>
+
+                                <!-- Output Display Box -->
+                                <div id="calcOutputBox" class="mt-6 p-5 rounded-2xl bg-black/50 border border-white/10 grid sm:grid-cols-3 gap-4 text-center">
+                                    <div>
+                                        <span class="block text-[10px] text-gray-400 uppercase">BMI Indeksi</span>
+                                        <span id="outBMI" class="font-heading text-3xl font-black text-titan-neon">24.2</span>
+                                    </div>
+                                    <div>
+                                        <span class="block text-[10px] text-gray-400 uppercase">Kunlik Kaloriya</span>
+                                        <span id="outCalories" class="font-heading text-3xl font-black text-titan-cyan">2,850 kkal</span>
+                                    </div>
+                                    <div>
+                                        <span class="block text-[10px] text-gray-400 uppercase">Tavsiya Dastur</span>
+                                        <span id="outProgram" class="text-xs font-bold text-white block mt-1">Titan Hypertrophy</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center max-w-3xl mx-auto mb-10">
+                        <span class="text-titan-neon font-extrabold text-xs uppercase tracking-widest">A'ZOLIK TARIFLARI</span>
+                        <h1 class="font-heading text-4xl sm:text-6xl font-black text-white uppercase mt-1">O'ZINGIZGA MOS TARIFNI TANLANG</h1>
+                    </div>
+
+                    <!-- Annual Discount Toggle -->
+                    <div class="flex items-center justify-center gap-4 mb-16">
+                        <span id="labelMonthly" class="text-xs font-extrabold text-white uppercase tracking-wider">Oylik To'lov</span>
+                        <button id="togglePeriodBtn" onclick="togglePricingPeriod()" class="w-16 h-8 rounded-full bg-black/80 border border-white/20 p-1 relative transition-colors focus:outline-none">
+                            <div id="toggleDot" class="w-6 h-6 rounded-full bg-titan-neon shadow-neon-glow transition-transform transform translate-x-0"></div>
+                        </button>
+                        <span id="labelAnnual" class="text-xs font-extrabold text-gray-400 uppercase tracking-wider flex items-center gap-2">
+                            Yillik Tarif 
+                            <span class="bg-titan-neon/20 text-titan-neon text-[10px] font-black px-2.5 py-0.5 rounded-full border border-titan-neon/40">-25% TEJAMKOR</span>
+                        </span>
+                    </div>
+
+                    <!-- Pricing Grid -->
+                    <div class="grid lg:grid-cols-3 gap-8 items-stretch mb-24">
+                        
+                        <!-- Card 1: Standard -->
+                        <div class="glass-card rounded-3xl p-8 flex flex-col justify-between relative">
+                            <div>
+                                <h3 class="font-heading text-3xl font-bold text-white mb-1">STANDARD</h3>
+                                <p class="text-gray-400 text-xs mb-6">Mustaqil shug'ullanuvchilar uchun</p>
+                                
+                                <div class="mb-8">
+                                    <span class="font-heading text-5xl font-black text-white price-num" data-m="450,000" data-a="337,500">450,000</span>
+                                    <span class="text-gray-400 text-xs"> so'm / oy</span>
+                                </div>
+
+                                <ul class="space-y-4 text-xs text-gray-300 mb-8">
+                                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-titan-neon"></i><span>Zalga kirish (08:00 - 17:00)</span></li>
+                                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-titan-neon"></i><span>Barcha trenajyor zonalari</span></li>
+                                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-titan-neon"></i><span>Smart Locker va dush</span></li>
+                                    <li class="flex items-center gap-3 text-gray-600"><i class="fa-solid fa-xmark"></i><span>Fin Saunasi xizmati</span></li>
+                                    <li class="flex items-center gap-3 text-gray-600"><i class="fa-solid fa-xmark"></i><span>InBody diagnostikasi</span></li>
+                                </ul>
+                            </div>
+
+                            <button onclick="selectPlanAndScroll('STANDARD Tarif')" class="w-full py-4 rounded-xl font-extrabold border border-white/20 text-white hover:bg-white/10 transition-all uppercase text-xs tracking-wider">
+                                TANLASH
+                            </button>
+                        </div>
+
+                        <!-- Card 2: PRO Unlimited -->
+                        <div class="glass-card rounded-3xl p-8 flex flex-col justify-between relative border-2 border-titan-neon shadow-neon-glow bg-titan-cardBg/90">
+                            <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-titan-neon text-black font-black text-[10px] px-4 py-1.5 rounded-full uppercase tracking-wider">
+                                ENG OMMABOP
+                            </div>
+
+                            <div>
+                                <h3 class="font-heading text-3xl font-bold text-white mb-1">PRO UNLIMITED</h3>
+                                <p class="text-gray-400 text-xs mb-6">Vaqt cheklovisiz 24/7 erkinlik</p>
+                                
+                                <div class="mb-8">
+                                    <span class="font-heading text-5xl font-black text-titan-neon price-num" data-m="700,000" data-a="525,000">700,000</span>
+                                    <span class="text-gray-400 text-xs"> so'm / oy</span>
+                                </div>
+
+                                <ul class="space-y-4 text-xs text-gray-300 mb-8">
+                                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-titan-neon"></i><span>24/7 Uzluksiz kirish</span></li>
+                                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-titan-neon"></i><span>Fin Saunasi va SPA zonasi</span></li>
+                                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-titan-neon"></i><span>InBody 770 oylik diagnostika</span></li>
+                                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-titan-neon"></i><span>2 ta bepul shaxsiy murabbiy darsi</span></li>
+                                    <li class="flex items-center gap-3 text-gray-600"><i class="fa-solid fa-xmark"></i><span>Shaxsiy VIP Locker</span></li>
+                                </ul>
+                            </div>
+
+                            <button onclick="selectPlanAndScroll('PRO UNLIMITED')" class="w-full py-4 rounded-xl font-black bg-titan-neon text-black hover:bg-titan-neonDark shadow-neon-glow transition-all uppercase text-xs tracking-wider">
+                                HOZIR A'ZO BO'LISH
+                            </button>
+                        </div>
+
+                        <!-- Card 3: VIP Ultra Gold -->
+                        <div class="glass-card rounded-3xl p-8 flex flex-col justify-between relative border-2 border-yellow-400/70 shadow-gold-glow">
+                            <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-yellow-400 to-amber-500 text-black font-black text-[10px] px-4 py-1.5 rounded-full uppercase tracking-wider">
+                                VIP PLATINUM
+                            </div>
+
+                            <div>
+                                <h3 class="font-heading text-3xl font-bold text-gold-gradient mb-1">VIP ULTRA PASS</h3>
+                                <p class="text-gray-400 text-xs mb-6">Individual murabbiy va maxsus servis</p>
+                                
+                                <div class="mb-8">
+                                    <span class="font-heading text-5xl font-black text-yellow-400 price-num" data-m="1,200,000" data-a="900,000">1,200,000</span>
+                                    <span class="text-gray-400 text-xs"> so'm / oy</span>
+                                </div>
+
+                                <ul class="space-y-4 text-xs text-gray-300 mb-8">
+                                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-yellow-400"></i><span>Har bir mashg'ulotda Shaxsiy Murabbiy</span></li>
+                                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-yellow-400"></i><span>24/7 Ustuvor va cheksiz kirish</span></li>
+                                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-yellow-400"></i><span>Fit-Barda bepul proteyn shake va izotonik</span></li>
+                                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-yellow-400"></i><span>Alohida Ismli VIP Shkafcha</span></li>
+                                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-yellow-400"></i><span>Oylik Massaj xizmati (2 dars)</span></li>
+                                </ul>
+                            </div>
+
+                            <button onclick="selectPlanAndScroll('VIP ULTRA PASS')" class="w-full py-4 rounded-xl font-black border border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black transition-all uppercase text-xs tracking-wider">
+                                VIP TARIFNI TANLASH
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <div class="max-w-3xl mx-auto glass-panel p-8 sm:p-12 rounded-3xl border border-white/15 shadow-2xl relative" id="registrationFormBox">
+                        <div class="text-center mb-8">
+                            <h2 class="font-heading text-3xl sm:text-4xl font-black text-white uppercase">TEZKOR RO'YXATDAN O'TISH</h2>
+                            <p class="text-gray-400 text-xs mt-1">Ma'lumotlaringizni qoldiring va menejerimiz 10 daqiqada bog'lanadi</p>
+                        </div>
+
+                        <form id="titanRegForm" onsubmit="handleTitanSubmit(event)" class="space-y-6">
+                            
+                            <div>
+                                <label for="regName" class="block text-xs font-bold text-gray-300 uppercase mb-2">Ism va Familiyangiz *</label>
+                                <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-gray-400 pointer-events-none"><i class="fa-regular fa-user"></i></span>
+                                    <input type="text" id="regName" required placeholder="Masalan: Azizbek Sodiqov" class="w-full pl-11 pr-4 py-3.5 bg-black/60 border border-white/10 rounded-xl text-white text-xs focus:border-titan-neon focus:outline-none">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="regPhone" class="block text-xs font-bold text-gray-300 uppercase mb-2">Telefon Raqamingiz *</label>
+                                <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-gray-400 pointer-events-none"><i class="fa-solid fa-phone"></i></span>
+                                    <input type="tel" id="regPhone" required value="+998 " placeholder="+998 90 123 45 67" class="w-full pl-11 pr-4 py-3.5 bg-black/60 border border-white/10 rounded-xl text-white text-xs font-mono focus:border-titan-neon focus:outline-none">
+                                </div>
+                            </div>
+
+                            <div class="grid sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="regPlan" class="block text-xs font-bold text-gray-300 uppercase mb-2">Tanlangan Tarif</label>
+                                    <select id="regPlan" class="w-full px-4 py-3.5 bg-black/60 border border-white/10 rounded-xl text-white text-xs focus:border-titan-neon focus:outline-none">
+                                        <option value="PRO UNLIMITED" class="bg-titan-cardBg text-white">PRO UNLIMITED</option>
+                                        <option value="STANDARD Tarif" class="bg-titan-cardBg text-white">STANDARD Tarif</option>
+                                        <option value="VIP ULTRA PASS" class="bg-titan-cardBg text-white">VIP ULTRA PASS</option>
+                                        <option value="Sinov Mashg'uloti" class="bg-titan-cardBg text-white">Sinov Mashg'uloti</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label for="regTime" class="block text-xs font-bold text-gray-300 uppercase mb-2">Qulay Vaqt</label>
+                                    <select id="regTime" class="w-full px-4 py-3.5 bg-black/60 border border-white/10 rounded-xl text-white text-xs focus:border-titan-neon focus:outline-none">
+                                        <option value="Ertalab (07:00 - 12:00)" class="bg-titan-cardBg text-white">Ertalab (07:00 - 12:00)</option>
+                                        <option value="Tushdan so'ng (12:00 - 17:00)" class="bg-titan-cardBg text-white">Tushdan so'ng (12:00 - 17:00)</option>
+                                        <option value="Kechqurun 24/7" class="bg-titan-cardBg text-white">Kechqurun 24/7</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="w-full py-4 rounded-xl font-black bg-titan-neon text-black hover:bg-titan-neonDark shadow-neon-glow uppercase text-xs tracking-widest transition-all flex items-center justify-center gap-2">
+                                <span>RO'YXATDAN O'TISHNI TASDIQLASH</span>
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+
+                        </form>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <footer class="bg-black border-t border-white/10 pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-titan-neon flex items-center justify-center text-black font-extrabold text-xl">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <span class="font-heading text-2xl font-black text-white">TITAN<span class="text-titan-neon">FORGE</span></span>
+                    </div>
+                    <p class="text-gray-400 text-xs leading-relaxed">Erkaklar uchun oliy toifadagi fitnes va bio-performance markazi.</p>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold text-xs uppercase mb-4 tracking-wider">Navigatsiya</h4>
+                    <ul class="space-y-2 text-xs text-gray-400">
+                        <li><a href="#home" onclick="navigateTo('home')" class="hover:text-titan-neon transition-colors">Asosiy Sahifa</a></li>
+                        <li><a href="#programs" onclick="navigateTo('programs')" class="hover:text-titan-neon transition-colors">Dasturlar & Murabbiylar</a></li>
+                        <li><a href="#programs" onclick="navigateTo('programs')" class="hover:text-titan-neon transition-colors">Mashg'ulot Jadvali</a></li>
+                        <li><a href="#pricing" onclick="navigateTo('pricing')" class="hover:text-titan-neon transition-colors">Tariflar & Kalkulyator</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold text-xs uppercase mb-4 tracking-wider">Aloqa</h4>
+                    <ul class="space-y-3 text-xs text-gray-400">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-location-dot text-titan-neon"></i><span>Toshkent sh., Yunusobod t., Bodomzor 45</span></li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-phone text-titan-neon"></i><span>+998 (71) 205-55-55</span></li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-envelope text-titan-neon"></i><span>club@titanforge.uz</span></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold text-xs uppercase mb-4 tracking-wider">Ijtimoiy Tarmoqlar</h4>
+                    <div class="flex items-center gap-3">
+                        <a href="#" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-titan-neon hover:text-black transition-all"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-titan-neon hover:text-black transition-all"><i class="fa-brands fa-telegram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-titan-neon hover:text-black transition-all"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+                <p>&copy; 2026 TITAN FORGE ULTRA MEN'S CLUB. Barcha huquqlar himoyalangan.</p>
+                <p>Designed with High-Performance SPA Architecture</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Glass Modal -->
+    <div id="titanSuccessModal" class="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/80 backdrop-blur-md hidden">
+        <div class="glass-panel p-8 rounded-3xl max-w-md w-full border border-titan-neon/40 text-center relative shadow-2xl">
+            <div class="w-16 h-16 rounded-full bg-titan-neon/20 border border-titan-neon text-titan-neon flex items-center justify-center text-3xl mx-auto mb-4 shadow-neon-glow">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 class="font-heading text-3xl font-bold text-white mb-2">ARIZA QABUL QILINDI!</h3>
+            <p class="text-gray-300 text-xs mb-6 leading-relaxed" id="modalStatusText">Operatorlarimiz siz bilan tez orada bog'lanadi.</p>
+            <button onclick="closeModal()" class="w-full py-3.5 rounded-xl font-black bg-titan-neon text-black hover:bg-titan-neonDark transition-all uppercase text-xs tracking-wider">
+                YOPISH
+            </button>
+        </div>
+    </div>
+
+    <!-- Toast Notification Holder -->
+    <div id="toastHolder" class="fixed bottom-6 right-6 z-50 space-y-3 pointer-events-none"></div>
+
+    <script>
+        // 1. SPA Router
+        function navigateTo(viewId) {
+            document.querySelectorAll('.spa-view').forEach(view => {
+                view.classList.remove('active');
+            });
+
+            const targetView = document.getElementById(`view-${viewId}`);
+            if (targetView) {
+                targetView.classList.add('active');
+            }
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('text-titan-neon', 'bg-white/10');
+                btn.classList.add('text-gray-300');
+            });
+
+            const activeBtn = document.getElementById(`nav-${viewId}`);
+            if (activeBtn) {
+                activeBtn.classList.add('text-titan-neon', 'bg-white/10');
+                activeBtn.classList.remove('text-gray-300');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            if (viewId === 'home') {
+                runCounters();
+            }
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+
+        // 2. Live Counter Animation
+        function runCounters() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                let count = 0;
+                const step = Math.ceil(target / 40);
+
+                const timer = setInterval(() => {
+                    count += step;
+                    if (count >= target) {
+                        counter.innerText = target;
+                        clearInterval(timer);
+                    } else {
+                        counter.innerText = count;
+                    }
+                }, 25);
+            });
+        }
+
+        // 3. Full Fitness & Calorie Calculator
+        function calculateFullFitnessStats() {
+            const h = parseFloat(document.getElementById('calcHeight').value) / 100;
+            const w = parseFloat(document.getElementById('calcWeight').value);
+            const age = parseFloat(document.getElementById('calcAge').value);
+            const goal = document.getElementById('calcGoal').value;
+
+            if (!h || !w || h <= 0 || w <= 0) {
+                showToast("Iltimos, ma'lumotlarni to'g'ri kiriting!", "error");
+                return;
+            }
+
+            const bmi = (w / (h * h)).toFixed(1);
+            let bmr = (10 * w) + (6.25 * (h * 100)) - (5 * age) + 5; // BMR Formula for Men
+
+            let totalCalories = Math.round(bmr * 1.55);
+            let progRecommended = "Titan Hypertrophy";
+
+            if (goal === 'gain') {
+                totalCalories += 400;
+                progRecommended = "Heavy Hypertrophy";
+            } else if (goal === 'loss') {
+                totalCalories -= 400;
+                progRecommended = "Alpha CrossFit & Fat Burn";
+            } else {
+                progRecommended = "Pro Boxing & Athletic";
+            }
+
+            document.getElementById('outBMI').innerText = bmi;
+            document.getElementById('outCalories').innerText = totalCalories.toLocaleString() + " kkal";
+            document.getElementById('outProgram').innerText = progRecommended;
+
+            showToast("Kalkulyator tahlili tayyorlandi!", "success");
+        }
+
+        // 4. Program Category Filter
+        function filterPrograms(cat) {
+            document.querySelectorAll('#programFilters .prog-filter').forEach(btn => {
+                btn.classList.remove('bg-titan-neon', 'text-black', 'shadow-neon-glow');
+                btn.classList.add('glass-panel', 'text-gray-300');
+            });
+
+            event.target.classList.add('bg-titan-neon', 'text-black', 'shadow-neon-glow');
+            event.target.classList.remove('glass-panel', 'text-gray-300');
+
+            document.querySelectorAll('.prog-card').forEach(card => {
+                if (cat === 'all' || card.getAttribute('data-category') === cat) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // 5. Dynamic Weekly Schedule
+        const scheduleDataset = {
+            dushanba: [
+                { time: "07:00 - 08:30", name: "Heavy Powerlifting & Deadlift", trainer: "Javohir Toshmatov", zone: "Eleiko Zone" },
+                { time: "10:00 - 11:30", name: "Fat Burn HIIT Cardio", trainer: "Davron Rustamov", zone: "Kardio Zali" },
+                { time: "18:00 - 19:30", name: "Pro Boxing Sparring", trainer: "Shoxrux Qodirov", zone: "Fight Arena" }
+            ],
+            seshanba: [
+                { time: "08:00 - 09:30", name: "CrossFit Hero WOD", trainer: "Davron Rustamov", zone: "CrossFit Arena" },
+                { time: "16:00 - 17:30", name: "Street Calisthenics", trainer: "Javohir Toshmatov", zone: "Workout Zone" }
+            ],
+            chorshanba: [
+                { time: "07:00 - 08:30", name: "Hypertrophy Bench & Arms", trainer: "Javohir Toshmatov", zone: "Eleiko Zone" },
+                { time: "18:30 - 20:00", name: "Kickboxing Technique", trainer: "Shoxrux Qodirov", zone: "Fight Arena" }
+            ],
+            payshanba: [
+                { time: "09:00 - 10:30", name: "Functional Core & Mobility", trainer: "Davron Rustamov", zone: "Kardio Zali" }
+            ],
+            juma: [
+                { time: "07:00 - 08:30", name: "Heavy Squat & Leg Day", trainer: "Javohir Toshmatov", zone: "Eleiko Zone" },
+                { time: "19:00 - 20:30", name: "Night Fighting Club", trainer: "Shoxrux Qodirov", zone: "Fight Arena" }
+            ],
+            shanba: [
+                { time: "10:00 - 11:30", name: "Full Body Endurance WOD", trainer: "Davron Rustamov", zone: "CrossFit Arena" }
+            ]
+        };
+
+        function renderTimetableDay(dayKey) {
+            document.querySelectorAll('#scheduleDayTabs .sday-btn').forEach(btn => {
+                btn.classList.remove('bg-titan-neon', 'text-black', 'shadow-neon-glow');
+                btn.classList.add('glass-panel', 'text-gray-300');
+            });
+
+            const activeBtn = document.getElementById(`sday-${dayKey}`);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-titan-neon', 'text-black', 'shadow-neon-glow');
+                activeBtn.classList.remove('glass-panel', 'text-gray-300');
+            }
+
+            const container = document.getElementById('scheduleRowsContainer');
+            const data = scheduleDataset[dayKey] || [];
+
+            container.innerHTML = data.map(item => `
+                <div class="p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 hover:bg-white/5 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="px-3.5 py-1.5 rounded-lg bg-titan-neon/10 text-titan-neon border border-titan-neon/30 text-xs font-mono font-bold">${item.time}</span>
+                        <div>
+                            <h4 class="text-white font-bold text-sm">${item.name}</h4>
+                            <p class="text-gray-400 text-xs"><i class="fa-solid fa-location-dot text-titan-neon mr-1"></i>${item.zone}</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="text-xs text-gray-300"><i class="fa-solid fa-user-ninja text-titan-cyan mr-1.5"></i>${item.trainer}</span>
+                        <button onclick="selectPlanAndScroll('${item.name}')" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-titan-neon hover:text-black text-white text-xs font-bold transition-all">YOZILISH</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 6. Pricing Toggle
+        let isAnnualPlan = false;
+        function togglePricingPeriod() {
+            isAnnualPlan = !isAnnualPlan;
+            const dot = document.getElementById('toggleDot');
+            const lblM = document.getElementById('labelMonthly');
+            const lblA = document.getElementById('labelAnnual');
+            const prices = document.querySelectorAll('.price-num');
+
+            if (isAnnualPlan) {
+                dot.classList.add('translate-x-8');
+                lblM.classList.replace('text-white', 'text-gray-400');
+                lblA.classList.replace('text-gray-400', 'text-white');
+                prices.forEach(el => el.innerText = el.getAttribute('data-a'));
+            } else {
+                dot.classList.remove('translate-x-8');
+                lblA.classList.replace('text-white', 'text-gray-400');
+                lblM.classList.replace('text-gray-400', 'text-white');
+                prices.forEach(el => el.innerText = el.getAttribute('data-m'));
+            }
+        }
+
+        // 7. Auto Selection & Auto Scroll
+        function selectPlanAndScroll(planTitle) {
+            navigateTo('pricing');
+            const selectEl = document.getElementById('regPlan');
+            if (selectEl) {
+                selectEl.value = planTitle;
+            }
+            document.getElementById('registrationFormBox')?.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function closeModal() {
+            document.getElementById('titanSuccessModal').classList.add('hidden');
+        }
+
+        function handleTitanSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('regName').value;
+            const plan = document.getElementById('regPlan').value;
+
+            document.getElementById('modalStatusText').innerHTML = `Arizangiz [<strong>${plan}</strong>] uchun qabul qilindi, <strong>${name}</strong>! Menejerimiz tez orada bog'lanadi.`;
+            document.getElementById('titanSuccessModal').classList.remove('hidden');
+
+            showToast("Ariza muvaffaqiyatli yuborildi!", "success");
+
+            document.getElementById('titanRegForm').reset();
+            document.getElementById('regPhone').value = "+998 ";
+        }
+
+        // 8. Phone Mask Input
+        document.getElementById('regPhone')?.addEventListener('input', function() {
+            if (!this.value.startsWith('+998 ')) {
+                this.value = '+998 ';
+            }
+        });
+
+        // 9. FAQ Accordion Toggle
+        function toggleFaq(id) {
+            const el = document.getElementById(id);
+            const icon = document.getElementById(`faq-icon-${id.split('-')[1]}`);
+            if (el) {
+                el.classList.toggle('hidden');
+                if (icon) icon.classList.toggle('rotate-180');
+            }
+        }
+
+        // 10. Toast Notification System
+        function showToast(msg, type = 'success') {
+            const holder = document.getElementById('toastHolder');
+            const toast = document.createElement('div');
+            const isSucc = type === 'success';
+
+            toast.className = `pointer-events-auto toast-slide-in p-4 rounded-2xl glass-panel border ${isSucc ? 'border-titan-neon/40 text-white' : 'border-red-500/40 text-white'} flex items-center gap-3 shadow-xl max-w-xs`;
+            toast.innerHTML = `
+                <div class="w-8 h-8 rounded-full ${isSucc ? 'bg-titan-neon/20 text-titan-neon' : 'bg-red-500/20 text-red-400'} flex items-center justify-center text-sm font-bold">
+                    <i class="fa-solid ${isSucc ? 'fa-check' : 'fa-exclamation'}"></i>
+                </div>
+                <p class="text-xs font-semibold">${msg}</p>
+            `;
+
+            holder.appendChild(toast);
+
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transition = 'opacity 0.4s ease';
+                setTimeout(() => toast.remove(), 400);
+            }, 3000);
+        }
+
+        // Load Defaults
+        window.addEventListener('load', () => {
+            runCounters();
+            renderTimetableDay('dushanba');
+        });
+    </script>
+</body>
+</html>vv

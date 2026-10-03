@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="uz" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEX FITNESS | O'z Tanangizning Eng Yaxshi Versiyasiga Aylanib Chiqing</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Syne & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            neon: '#D4FF00', // Electric Neon Lime
+                            neonHover: '#BCE600',
+                            cyan: '#00F2FE',
+                            darkBg: '#090B0E',
+                            cardBg: 'rgba(18, 22, 29, 0.75)',
+                            cardBorder: 'rgba(212, 255, 0, 0.15)',
+                            surface: '#13171F'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Syne', 'sans-serif'],
+                        body: ['Plus Jakarta Sans', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'neon-glow': '0 0 25px rgba(212, 255, 0, 0.3)',
+                        'cyan-glow': '0 0 25px rgba(0, 242, 254, 0.3)',
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom CSS Enhancements */
+        body {
+            background-color: #090B0E;
+            color: #F3F4F6;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .font-heading {
+            font-family: 'Syne', sans-serif;
+        }
+
+        /* Glassmorphism custom styling */
+        .glass-panel {
+            background: rgba(19, 23, 31, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .glass-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(212, 255, 0, 0.4);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 255, 0, 0.15);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #090B0E;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #222938;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4FF00;
+        }
+
+        /* Background Text Mask Grid */
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(212, 255, 0, 0.1) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #FFFFFF 30%, #9CA3AF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-neon-gradient {
+            background: linear-gradient(135deg, #D4FF00 0%, #00F2FE 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* SPA view management */
+        .spa-page {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .spa-page.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Animated Pulsing Ring */
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+        .pulse-glow {
+            animation: pulseGlow 4s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-neon selection:text-black">
+
+    <!-- NAVIGATION BAR -->
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300" id="mainHeader">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#home" onclick="navigateTo('home')" class="flex items-center gap-3 group">
+                    <div class="w-11 h-11 rounded-xl bg-brand-neon flex items-center justify-center text-black font-extrabold text-2xl shadow-neon-glow group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-dumbbell"></i>
+                    </div>
+                    <div>
+                        <span class="font-heading text-2xl font-extrabold tracking-wider text-white block leading-none">APEX<span class="text-brand-neon">FIT</span></span>
+                        <span class="text-[10px] text-gray-400 font-medium tracking-widest uppercase">MEN'S CLUB</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links (SPA Switches) -->
+                <nav class="hidden md:flex items-center gap-1 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 backdrop-blur-md">
+                    <button onclick="navigateTo('home')" id="nav-home" class="nav-btn px-5 py-2 rounded-full text-sm font-semibold transition-all text-brand-neon bg-white/10">
+                        <i class="fa-solid fa-house text-xs mr-2"></i>Asosiy
+                    </button>
+                    <button onclick="navigateTo('workouts')" id="nav-workouts" class="nav-btn px-5 py-2 rounded-full text-sm font-semibold transition-all text-gray-300 hover:text-white hover:bg-white/5">
+                        <i class="fa-solid fa-fire text-xs mr-2"></i>Mashg'ulotlar & Murabbiylar
+                    </button>
+                    <button onclick="navigateTo('pricing')" id="nav-pricing" class="nav-btn px-5 py-2 rounded-full text-sm font-semibold transition-all text-gray-300 hover:text-white hover:bg-white/5">
+                        <i class="fa-solid fa-tags text-xs mr-2"></i>Narxlar & A'zolik
+                    </button>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="hidden lg:flex items-center gap-4">
+                    <button onclick="openRegisterModal('Bepul Mashg\'ulot')" class="relative inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-black transition-all bg-brand-neon rounded-full hover:bg-brand-neonHover shadow-neon-glow hover:scale-105 active:scale-95">
+                        <span>BEPUL SINOV</span>
+                        <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                    </button>
+                </div>
+
+                <!-- Mobile Hamburger Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="p-2.5 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-white focus:outline-none">
+                        <i class="fa-solid fa-bars-staggered text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Slide-out Menu -->
+        <div id="mobileMenu" class="hidden md:hidden glass-panel border-b border-white/10 px-4 pt-3 pb-6 space-y-3 transition-all duration-300">
+            <button onclick="navigateTo('home'); toggleMobileMenu()" class="w-full text-left px-4 py-3 rounded-xl text-base font-semibold text-white hover:bg-white/10 flex items-center gap-3">
+                <i class="fa-solid fa-house text-brand-neon"></i> Asosiy Sahifa
+            </button>
+            <button onclick="navigateTo('workouts'); toggleMobileMenu()" class="w-full text-left px-4 py-3 rounded-xl text-base font-semibold text-white hover:bg-white/10 flex items-center gap-3">
+                <i class="fa-solid fa-fire text-brand-neon"></i> Mashg'ulotlar & Murabbiylar
+            </button>
+            <button onclick="navigateTo('pricing'); toggleMobileMenu()" class="w-full text-left px-4 py-3 rounded-xl text-base font-semibold text-white hover:bg-white/10 flex items-center gap-3">
+                <i class="fa-solid fa-tags text-brand-neon"></i> Narxlar & Ro'yxatdan o'tish
+            </button>
+            <div class="pt-2">
+                <button onclick="openRegisterModal('Mobile A\'zolik'); toggleMobileMenu()" class="w-full py-3 text-center font-bold text-black bg-brand-neon rounded-xl shadow-neon-glow">
+                    BEPUL SINOVGA YOZILISH
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER WITH SPA PAGES -->
+    <main class="pt-20 min-h-screen">
+
+        <!-- ========================================================= -->
+        <!-- PAGE 1: ASOSIY SAHIFA (HOME)                             -->
+        <!-- ========================================================= -->
+        <div id="page-home" class="spa-page active">
+            
+            <!-- Hero Section -->
+            <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden py-16">
+                <!-- Background Glowing Orbs -->
+                <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-neon/15 rounded-full blur-[130px] pointer-events-none pulse-glow"></div>
+                <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-brand-cyan/15 rounded-full blur-[130px] pointer-events-none pulse-glow" style="animation-delay: 2s;"></div>
+                <div class="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none"></div>
+
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+                    <div class="grid lg:grid-cols-12 gap-12 items-center">
+                        
+                        <!-- Left Hero Content -->
+                        <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel border border-brand-neon/30 text-brand-neon text-xs font-bold tracking-wider uppercase">
+                                <span class="w-2 h-2 rounded-full bg-brand-neon animate-ping"></span>
+                                Premium Erkaklar Fitnes Klubi
+                            </div>
+
+                            <h1 class="font-heading text-4xl sm:text-6xl xl:text-7xl font-extrabold uppercase leading-[1.08] tracking-tight">
+                                O'Z TANANGIZNING <br>
+                                <span class="text-neon-gradient">ENG KUCHLI</span> <br>
+                                VERSYASINI YARATING
+                            </h1>
+
+                            <p class="text-gray-400 text-lg sm:text-xl max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                                Professional murabbiylar, so'nggi avlod Italiya trenajyorlari va natijaga yo'naltirilgan individual dasturlar bilan maqsadlaringizga tezroq erishing.
+                            </p>
+
+                            <!-- Hero Buttons -->
+                            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                                <button onclick="navigateTo('pricing')" class="w-full sm:w-auto px-8 py-4 rounded-xl font-bold bg-brand-neon text-black hover:bg-brand-neonHover shadow-neon-glow transition-all hover:scale-105 text-base flex items-center justify-center gap-3">
+                                    <span>A'ZO BO'LISH</span>
+                                    <i class="fa-solid fa-bolt"></i>
+                                </button>
+                                <button onclick="navigateTo('workouts')" class="w-full sm:w-auto px-8 py-4 rounded-xl font-bold glass-panel border border-white/20 hover:bg-white/10 text-white transition-all text-base flex items-center justify-center gap-3">
+                                    <i class="fa-solid fa-play text-brand-neon text-xs"></i>
+                                    <span>MASHG'ULOTLARNI KO'RISH</span>
+                                </button>
+                            </div>
+
+                            <!-- Trust Badges -->
+                            <div class="pt-6 border-t border-white/10 flex items-center justify-center lg:justify-start gap-8">
+                                <div class="flex -space-x-3">
+                                    <img class="w-10 h-10 rounded-full border-2 border-brand-darkBg object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Member">
+                                    <img class="w-10 h-10 rounded-full border-2 border-brand-darkBg object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" alt="Member">
+                                    <img class="w-10 h-10 rounded-full border-2 border-brand-darkBg object-cover" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80" alt="Member">
+                                    <div class="w-10 h-10 rounded-full border-2 border-brand-darkBg bg-brand-surface flex items-center justify-center text-xs font-bold text-brand-neon">+1.2k</div>
+                                </div>
+                                <div class="text-left">
+                                    <div class="flex items-center gap-1 text-yellow-400 text-xs">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <span class="text-white font-bold ml-1">4.9/5</span>
+                                    </div>
+                                    <p class="text-xs text-gray-400">1200+ faol a'zolar bahosi</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Hero Visual Banner -->
+                        <div class="lg:col-span-5 relative">
+                            <div class="relative mx-auto max-w-md lg:max-w-none">
+                                <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-brand-neon to-brand-cyan opacity-30 blur-xl"></div>
+                                <div class="relative rounded-3xl overflow-hidden border border-white/10 glass-panel">
+                                    <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=800&auto=format&fit=crop&q=80" alt="Gym Workout" class="w-full h-[480px] object-cover object-center filter brightness-90">
+                                    
+                                    <!-- Floating Overlay Card 1 -->
+                                    <div class="absolute bottom-6 left-6 right-6 p-4 rounded-2xl glass-panel border border-white/15 flex items-center justify-between">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-12 h-12 rounded-xl bg-brand-neon/20 flex items-center justify-center text-brand-neon text-xl">
+                                                <i class="fa-solid fa-heart-pulse"></i>
+                                            </div>
+                                            <div>
+                                                <p class="text-xs text-gray-400 font-medium">Kuygan kaloriyalar</p>
+                                                <p class="text-lg font-bold text-white">850+ kkal / soat</p>
+                                            </div>
+                                        </div>
+                                        <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-brand-neon/20 text-brand-neon border border-brand-neon/30">INTENSIV</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- STATS COUNTER SECTION -->
+            <section class="py-12 border-y border-white/10 bg-brand-surface/40 relative">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                        <div class="p-4">
+                            <div class="font-heading text-4xl sm:text-5xl font-extrabold text-brand-neon mb-1 font-mono"><span class="counter" data-target="1500">0</span>+</div>
+                            <p class="text-gray-400 text-sm font-medium uppercase tracking-wider">Doimiy A'zolar</p>
+                        </div>
+                        <div class="p-4">
+                            <div class="font-heading text-4xl sm:text-5xl font-extrabold text-white mb-1 font-mono"><span class="counter" data-target="18">0</span>+</div>
+                            <p class="text-gray-400 text-sm font-medium uppercase tracking-wider">Pro Murabbiylar</p>
+                        </div>
+                        <div class="p-4">
+                            <div class="font-heading text-4xl sm:text-5xl font-extrabold text-brand-cyan mb-1 font-mono"><span class="counter" data-target="2500">0</span> m²</div>
+                            <p class="text-gray-400 text-sm font-medium uppercase tracking-wider">Zal Maydoni</p>
+                        </div>
+                        <div class="p-4">
+                            <div class="font-heading text-4xl sm:text-5xl font-extrabold text-white mb-1 font-mono"><span class="counter" data-target="99">0</span>%</div>
+                            <p class="text-gray-400 text-sm font-medium uppercase tracking-wider">Ijobiy Natija</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- WHY CHOOSE US / ADVANTAGES GRID -->
+            <section class="py-24 relative">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-3xl mx-auto mb-16">
+                        <h2 class="text-brand-neon font-bold text-sm tracking-widest uppercase mb-3">Nega Aynan APEX FITNESS?</h2>
+                        <h3 class="font-heading text-3xl sm:text-5xl font-extrabold text-white uppercase">Siz Uchun Yaratilgan Mukammal Sharoitlar</h3>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <!-- Card 1 -->
+                        <div class="glass-card p-8 rounded-2xl relative group">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-neon/10 border border-brand-neon/20 flex items-center justify-center text-brand-neon text-2xl mb-6 group-hover:bg-brand-neon group-hover:text-black transition-all">
+                                <i class="fa-solid fa-cubes-stacked"></i>
+                            </div>
+                            <h4 class="font-heading text-xl font-bold text-white mb-3">So'nggi Trenajyorlar</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">Technogym va Hammer Strength brendlarining eng zamonaviy va xavfsiz uskunalari bilan jihozlangan zal.</p>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="glass-card p-8 rounded-2xl relative group">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-cyan/10 border border-brand-cyan/20 flex items-center justify-center text-brand-cyan text-2xl mb-6 group-hover:bg-brand-cyan group-hover:text-black transition-all">
+                                <i class="fa-solid fa-user-ninja"></i>
+                            </div>
+                            <h4 class="font-heading text-xl font-bold text-white mb-3">Xalqaro Murabbiylar</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">Xalqaro sertifikatga ega va chempionlik unvonidagi murabbiylardan individual maslahatlar va nazorat.</p>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="glass-card p-8 rounded-2xl relative group">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-neon/10 border border-brand-neon/20 flex items-center justify-center text-brand-neon text-2xl mb-6 group-hover:bg-brand-neon group-hover:text-black transition-all">
+                                <i class="fa-solid fa-spa"></i>
+                            </div>
+                            <h4 class="font-heading text-xl font-bold text-white mb-3">Fin Saunasi & SPA</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">Mashg'ulotdan so'ng mushaklarni tiklash va hordiq chiqarish uchun Fin saunasi hamda massaj xonalari.</p>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="glass-card p-8 rounded-2xl relative group">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-cyan/10 border border-brand-cyan/20 flex items-center justify-center text-brand-cyan text-2xl mb-6 group-hover:bg-brand-cyan group-hover:text-black transition-all">
+                                <i class="fa-solid fa-apple-whole"></i>
+                            </div>
+                            <h4 class="font-heading text-xl font-bold text-white mb-3">Fit-Bar & Ovqatlanish</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">Proteyn kokteyllari, sport qo'shimchalari hamda maqsadga mos ozuqalar menyusi taklif etiladi.</p>
+                        </div>
+
+                        <!-- Card 5 -->
+                        <div class="glass-card p-8 rounded-2xl relative group">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-neon/10 border border-brand-neon/20 flex items-center justify-center text-brand-neon text-2xl mb-6 group-hover:bg-brand-neon group-hover:text-black transition-all">
+                                <i class="fa-solid fa-mobile-screen-button"></i>
+                            </div>
+                            <h4 class="font-heading text-xl font-bold text-white mb-3">Mobil Ilova & Lockers</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">Face-ID kirish tizimi, shaxsiy shkafchalar hamda natijalarni ilova orqali kuzatib borish imkoni.</p>
+                        </div>
+
+                        <!-- Card 6 -->
+                        <div class="glass-card p-8 rounded-2xl relative group">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-cyan/10 border border-brand-cyan/20 flex items-center justify-center text-brand-cyan text-2xl mb-6 group-hover:bg-brand-cyan group-hover:text-black transition-all">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <h4 class="font-heading text-xl font-bold text-white mb-3">24/7 Qulay Ish Vaqti</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">Haftaning 7 kuni, ertalabki 06:00 dan tungi 23:30 gacha uzluksiz ishlash rejimimiz mavjud.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TESTIMONIALS SECTION -->
+            <section class="py-20 border-t border-white/10 bg-brand-surface/30">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                        <div>
+                            <span class="text-brand-neon text-xs font-bold uppercase tracking-widest">Natijalar va fikrlar</span>
+                            <h3 class="font-heading text-3xl sm:text-4xl font-extrabold text-white mt-1">A'ZOLARIMIZ NEGA BIZNI TANLASHADI?</h3>
+                        </div>
+                        <div class="flex items-center gap-3 mt-4 md:mt-0">
+                            <button id="prevTestimonial" class="p-3 rounded-full border border-white/20 text-white hover:bg-brand-neon hover:text-black transition-all">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <button id="nextTestimonial" class="p-3 rounded-full border border-white/20 text-white hover:bg-brand-neon hover:text-black transition-all">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial Cards Container -->
+                    <div class="grid md:grid-cols-3 gap-6" id="testimonialsContainer">
+                        <!-- Review 1 -->
+                        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
+                            <div class="space-y-4">
+                                <div class="flex text-yellow-400 text-xs">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                </div>
+                                <p class="text-gray-300 text-sm italic">"3 oy ichida 12 kg vazn yo'qotdim va mushak massasini oshirdim. Murabbiyim Javohir akaning professional yondashuvi uchun rahmat!"</p>
+                            </div>
+                            <div class="flex items-center gap-3 mt-6 pt-4 border-t border-white/10">
+                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80" class="w-11 h-11 rounded-full object-cover" alt="Sardor M.">
+                                <div>
+                                    <h5 class="text-white font-bold text-sm">Sardor Mamadaliyev</h5>
+                                    <p class="text-xs text-brand-neon">Biznesmen (A'zo: 8 oy)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Review 2 -->
+                        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
+                            <div class="space-y-4">
+                                <div class="flex text-yellow-400 text-xs">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                </div>
+                                <p class="text-gray-300 text-sm italic">"Zaldagi muhit judayam baquvvat va motivatsiyaga boy. Trenajyorlar yangi va toza, sauna esa mashg'ulotdan so'ng zo'r rohat beradi."</p>
+                            </div>
+                            <div class="flex items-center gap-3 mt-6 pt-4 border-t border-white/10">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&auto=format&fit=crop&q=80" class="w-11 h-11 rounded-full object-cover" alt="Otabek K.">
+                                <div>
+                                    <h5 class="text-white font-bold text-sm">Otabek Karimov</h5>
+                                    <p class="text-xs text-brand-cyan">IT Dasturchi (A'zo: 1 yil)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Review 3 -->
+                        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
+                            <div class="space-y-4">
+                                <div class="flex text-yellow-400 text-xs">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                </div>
+                                <p class="text-gray-300 text-sm italic">"Krossfit va Boks seksiyalari juda sifatli yo'lga qo'yilgan. Murabbiylar har bir mashq texnikasini sinchkovlik bilan tushuntirishadi."</p>
+                            </div>
+                            <div class="flex items-center gap-3 mt-6 pt-4 border-t border-white/10">
+                                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&auto=format&fit=crop&q=80" class="w-11 h-11 rounded-full object-cover" alt="Jasur B.">
+                                <div>
+                                    <h5 class="text-white font-bold text-sm">Jasur Bekmurodov</h5>
+                                    <p class="text-xs text-brand-neon">Inzhener (A'zo: 5 oy)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- PAGE 2: MASHG'ULOTLAR VA MURABBIYLAR                      -->
+        <!-- ========================================================= -->
+        <div id="page-workouts" class="spa-page">
+            <section class="py-12">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    
+                    <!-- Title Header -->
+                    <div class="text-center max-w-3xl mx-auto mb-12">
+                        <span class="text-brand-neon font-bold text-xs uppercase tracking-widest">Dasturlar & Murabbiylar</span>
+                        <h1 class="font-heading text-3xl sm:text-5xl font-extrabold text-white mt-2">MASHG'ULOT TURLARI VA MURABBIYLAR</h1>
+                        <p class="text-gray-400 text-sm sm:text-base mt-3">O'zingizga mos mashg'ulot turini tanlang hamda tajribali murabbiylardan shaxsiy ko'rsatmalar oling.</p>
+                    </div>
+
+                    <!-- Category Filter Tabs -->
+                    <div class="flex items-center justify-center gap-2 flex-wrap mb-12" id="workoutFilters">
+                        <button onclick="filterWorkouts('all')" class="filter-btn active px-6 py-2.5 rounded-full text-sm font-bold bg-brand-neon text-black shadow-neon-glow transition-all">
+                            Barchasi
+                        </button>
+                        <button onclick="filterWorkouts('kuch')" class="filter-btn px-6 py-2.5 rounded-full text-sm font-bold glass-panel text-gray-300 hover:text-white transition-all">
+                            Kuch Mashqlari
+                        </button>
+                        <button onclick="filterWorkouts('kardio')" class="filter-btn px-6 py-2.5 rounded-full text-sm font-bold glass-panel text-gray-300 hover:text-white transition-all">
+                            Kardio & Yugurish
+                        </button>
+                        <button onclick="filterWorkouts('krossfit')" class="filter-btn px-6 py-2.5 rounded-full text-sm font-bold glass-panel text-gray-300 hover:text-white transition-all">
+                            Krossfit
+                        </button>
+                        <button onclick="filterWorkouts('boks')" class="filter-btn px-6 py-2.5 rounded-full text-sm font-bold glass-panel text-gray-300 hover:text-white transition-all">
+                            Boks & Yakkakurash
+                        </button>
+                    </div>
+
+                    <!-- Workouts Cards Grid -->
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24" id="workoutsGrid">
+                        
+                        <!-- Workout 1 -->
+                        <div class="workout-card glass-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="kuch">
+                            <div>
+                                <div class="relative h-56 overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=800&auto=format&fit=crop&q=80" alt="Bodybuilding" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                                    <span class="absolute top-4 left-4 bg-brand-darkBg/80 backdrop-blur-md text-brand-neon text-xs font-bold px-3 py-1.5 rounded-full border border-brand-neon/30">
+                                        KUCH MASHQLARI
+                                    </span>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="font-heading text-xl font-bold text-white mb-2">Bodibilding & Gipertrofiya</h3>
+                                    <p class="text-gray-400 text-sm mb-4">Mushak hajmini oshirish, relyef va umumiy jismoniy kuchni rivojlantirishga qaratilgan maxsus dastur.</p>
+                                    
+                                    <div class="grid grid-cols-3 gap-2 py-3 border-y border-white/10 text-center mb-4">
+                                        <div>
+                                            <span class="block text-[10px] text-gray-400 uppercase">Davomiylik</span>
+                                            <span class="text-xs font-bold text-white">90 daqiq</span>
+                                        </div>
+                                        <div>
+                                            <span class="block text-[10px] text-gray-400 uppercase">Kaloriya</span>
+                                            <span class="text-xs font-bold text-brand-neon">700 kkal</span>
+                                        </div>
+                                        <div>
+                                            <span class="block text-[10px] text-gray-400 uppercase">Daraja</span>
+                                            <span class="text-xs font-bold text-white">Yuqori</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="px-6 pb-6">
+                                <button onclick="openRegisterModal('Bodibilding Dasturi')" class="w-full py-3 rounded-xl font-bold bg-white/10 text-white hover:bg-brand-neon hover:text-black transition-all flex items-center justify-center gap-2">
+                                    <span>Yozilish</span>
+                                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Workout 2 -->
+                        <div class="workout-card glass-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="krossfit">
+                            <div>
+                                <div class="relative h-56 overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=800&auto=format&fit=crop&q=80" alt="Crossfit" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                                    <span class="absolute top-4 left-4 bg-brand-darkBg/80 backdrop-blur-md text-brand-cyan text-xs font-bold px-3 py-1.5 rounded-full border border-brand-cyan/30">
+                                        KROSSFIT
+                                    </span>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="font-heading text-xl font-bold text-white mb-2">Extreme Functional CrossFit</h3>
+                                    <p class="text-gray-400 text-sm mb-4">Chidamlilik, tezkorlik va funksional kuchni bir vaqtda rivojlantiruvchi yuqori intensivli mashqlar.</p>
+                                    
+                                    <div class="grid grid-cols-3 gap-2 py-3 border-y border-white/10 text-center mb-4">
+                                        <div>
+                                            <span class="block text-[10px] text-gray-400 uppercase">Davomiylik</span>
+                                            <span class="text-xs font-bold text-white">60 daqiq</span>
+                                        </div>
+                                        <div>
+                                            <span class="block text-[10px] text-gray-400 uppercase">Kaloriya</span>
+                                            <span class="text-xs font-bold text-brand-neon">950 kkal</span>
+                                        </div>
+                                        <div>
+                                            <span class="block text-[10px] text-gray-400 uppercase">Daraja</span>
+                                            <span class="text-xs font-bold text-white">Ekstremal</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="px-6 pb-6">
+                                <button onclick="openRegisterModal('Crossfit Dasturi')" class="w-full py-3 rounded-xl font-bold bg-white/10 text-white hover:bg-brand-neon hover:text-black transition-all flex items-center justify-center gap-2">
+                                    <span>Yozilish</span>
+                                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Workout 3 -->
+                        <div class="workout-card glass-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="kardio">
+                            <div>
+                                <div class="relative h-56 overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?w=800&auto=format&fit=crop&q=80" alt="Cardio" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                                    <span class="absolute top-4 left-4 bg-brand-darkBg/80 backdrop-blur-md text-brand-neon text-xs font-bold px-3 py-1.5 rounded-full border border-brand-neon/30">
+                                        KARDIO
+                                    </span>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="font-heading text-xl font-bold text-white mb-2">Fat Burn Cardio HIIT</h3>
+                                    <p class="text-gray-400 text-sm mb-4">Ortiqcha vazndan xalos bo'lish va yurak-qon tomir tizimini mustahkamlash uchun mo'ljallangan intensiv interval kardio.</p>
+                                    
+                                    <div class="grid grid-cols-3 gap-2 py-3 border-y border-white/10 text-center mb-4">
+                                        <div>
+                                            <span class="block text-[10px] text-gray-400 uppercase">Davomiylik</span>
+                                            <span class="text-xs font-bold text-white">45 daqiq</span>
+                                        </div>
+                                        <div>
+                                            <span class="block text-[10px] text-gray-400 uppercase">Kaloriya</span>
+                                            <span class="text-xs font-bold text-brand-neon">600 kkal</span>
+                                        </div>
+                                        <div>
+                                            <span class="block text-[10px] text-gray-400 uppercase">Daraja</span>
+                                            <span class="text-xs font-bold text-white">O'rta</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="px-6 pb-6">
+                                <button onclick="openRegisterModal('Kardio HIIT')" class="w-full py-3 rounded-xl font-bold bg-white/10 text-white hover:bg-brand-neon hover:text-black transition-all flex items-center justify-center gap-2">
+                                    <span>Yozilish</span>
+                                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Workout 4 -->
+                        <div class="workout-card glass-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="boks">
+                            <div>
+                                <div class="relative h-56 overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=800&auto=format&fit=crop&q=80" alt="Boxing" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                                    <span class="absolute top-4 left-4 bg-brand-darkBg/80 backdrop-blur-md text-red-400 text-xs font-bold px-3 py-1.5 rounded-full border border-red-400/30">
+                                        BOKS
+                                    </span>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="font-heading text-xl font-bold text-white mb-2">Professional Boks & Kickboxing</h3>
+                                    <p class="text-gray-400 text-sm mb-4">Zarba texnikasi, o'zini-o'zi himoya qilish, reaksiya tezligi va umumiy harakatchanlikni oshirish mashg'ulotlari.</p>
+                                    
+                                    <div class="grid grid-cols-3 gap-2 py-3 border-y border-white/10 text-center mb-4">
+                                        <div>
+                                            <span class="block text-[10px] text-gray-400 uppercase">Davomiylik</span>
+                                            <span class="text-xs font-bold text-white">75 daqiq</span>
+                                        </div>
+                                        <div>
+                                            <span class="block text-[10px] text-gray-400 uppercase">Kaloriya</span>
+                                            <span class="text-xs font-bold text-brand-neon">800 kkal</span>
+                                        </div>
+                                        <div>
+                                            <span class="block text-[10px] text-gray-400 uppercase">Daraja</span>
+                                            <span class="text-xs font-bold text-white">Barcha daraja</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="px-6 pb-6">
+                                <button onclick="openRegisterModal('Boks Dasturi')" class="w-full py-3 rounded-xl font-bold bg-white/10 text-white hover:bg-brand-neon hover:text-black transition-all flex items-center justify-center gap-2">
+                                    <span>Yozilish</span>
+                                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- TRAINERS SECTION -->
+                    <div class="border-t border-white/10 pt-16">
+                        <div class="text-center max-w-2xl mx-auto mb-16">
+                            <span class="text-brand-cyan text-xs font-bold uppercase tracking-widest">Tajribali Jamoamiz</span>
+                            <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white mt-1">PROFESSIONAL MURABBIYLAR</h2>
+                            <p class="text-gray-400 text-sm mt-2">Sizning maqsadlaringiz sari har bir qadamingizni professional darajada yo'naltiruvchi murabbiylarimiz.</p>
+                        </div>
+
+                        <div class="grid md:grid-cols-3 gap-8">
+                            <!-- Trainer 1 -->
+                            <div class="glass-card rounded-2xl overflow-hidden p-6 text-center group">
+                                <div class="relative w-36 h-36 mx-auto mb-6 rounded-full overflow-hidden border-2 border-brand-neon shadow-neon-glow">
+                                    <img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?w=500&auto=format&fit=crop&q=80" alt="Javohir Toshmatov" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                                </div>
+                                <h3 class="font-heading text-xl font-bold text-white">Javohir Toshmatov</h3>
+                                <p class="text-brand-neon text-xs font-bold tracking-wider uppercase mb-3">BOSH MURABBIY / BODIBILDING</p>
+                                <p class="text-gray-400 text-xs leading-relaxed mb-4">7 yillik tajriba. Bodibilding bo'yicha O'zbekiston chempioni. Ovqatlanish va relyef bo'yicha ekspert.</p>
+                                <div class="flex items-center justify-center gap-3 text-gray-400">
+                                    <a href="#" class="hover:text-brand-neon text-sm"><i class="fa-brands fa-instagram"></i></a>
+                                    <a href="#" class="hover:text-brand-neon text-sm"><i class="fa-brands fa-telegram"></i></a>
+                                </div>
+                            </div>
+
+                            <!-- Trainer 2 -->
+                            <div class="glass-card rounded-2xl overflow-hidden p-6 text-center group">
+                                <div class="relative w-36 h-36 mx-auto mb-6 rounded-full overflow-hidden border-2 border-brand-cyan shadow-cyan-glow">
+                                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80" alt="Davron Rustamov" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                                </div>
+                                <h3 class="font-heading text-xl font-bold text-white">Davron Rustamov</h3>
+                                <p class="text-brand-cyan text-xs font-bold tracking-wider uppercase mb-3">KROSSFIT & HIiT INSTRUKTOR</p>
+                                <p class="text-gray-400 text-xs leading-relaxed mb-4">Xalqaro Crossfit Level-2 sertifikati egasi. Chidamlilik va funksional tayyorgarlik bo'yicha mutaxassis.</p>
+                                <div class="flex items-center justify-center gap-3 text-gray-400">
+                                    <a href="#" class="hover:text-brand-cyan text-sm"><i class="fa-brands fa-instagram"></i></a>
+                                    <a href="#" class="hover:text-brand-cyan text-sm"><i class="fa-brands fa-telegram"></i></a>
+                                </div>
+                            </div>
+
+                            <!-- Trainer 3 -->
+                            <div class="glass-card rounded-2xl overflow-hidden p-6 text-center group">
+                                <div class="relative w-36 h-36 mx-auto mb-6 rounded-full overflow-hidden border-2 border-brand-neon shadow-neon-glow">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80" alt="Shoxrux Qodirov" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                                </div>
+                                <h3 class="font-heading text-xl font-bold text-white">Shoxrux Qodirov</h3>
+                                <p class="text-brand-neon text-xs font-bold tracking-wider uppercase mb-3">BOKS & SPARRING MURABBIY</p>
+                                <p class="text-gray-400 text-xs leading-relaxed mb-4">Xalqaro darajadagi sport ustasi. Boks va zarba texnikasi bo'yicha 100+ shogirdlar tayyorlagan.</p>
+                                <div class="flex items-center justify-center gap-3 text-gray-400">
+                                    <a href="#" class="hover:text-brand-neon text-sm"><i class="fa-brands fa-instagram"></i></a>
+                                    <a href="#" class="hover:text-brand-neon text-sm"><i class="fa-brands fa-telegram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- PAGE 3: NARXLAR VA RO'YXATDAN O'TISH                      -->
+        <!-- ========================================================= -->
+        <div id="page-pricing" class="spa-page">
+            <section class="py-12">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    
+                    <!-- Title -->
+                    <div class="text-center max-w-3xl mx-auto mb-10">
+                        <span class="text-brand-neon font-bold text-xs uppercase tracking-widest">A'zolik Tariflari</span>
+                        <h1 class="font-heading text-3xl sm:text-5xl font-extrabold text-white mt-2">HAYOTINGIZNI BUGUNDAN O'ZGARTIRING</h1>
+                        <p class="text-gray-400 text-sm sm:text-base mt-3">Qulay va mos tarif rejasini tanlang hamda zimmangizga olgan maqsadingiz sari birinchi qadamni tashlang.</p>
+                    </div>
+
+                    <!-- Monthly / Annual Toggle Switch -->
+                    <div class="flex items-center justify-center gap-4 mb-16">
+                        <span id="monthlyLabel" class="text-sm font-bold text-white">Oylik Tarif</span>
+                        <button id="pricingToggle" onclick="togglePricingPeriod()" class="w-16 h-8 rounded-full bg-brand-surface border border-white/20 p-1 relative transition-colors focus:outline-none">
+                            <div id="toggleCircle" class="w-6 h-6 rounded-full bg-brand-neon transition-transform transform translate-x-0"></div>
+                        </button>
+                        <span id="annualLabel" class="text-sm font-bold text-gray-400 flex items-center gap-2">
+                            Yillik Tarif 
+                            <span class="bg-brand-neon/20 text-brand-neon text-[10px] font-extrabold px-2 py-0.5 rounded-full border border-brand-neon/30">-20% TEJAMKOR</span>
+                        </span>
+                    </div>
+
+                    <!-- Pricing Cards Grid -->
+                    <div class="grid lg:grid-cols-3 gap-8 items-stretch mb-24">
+                        
+                        <!-- Plan 1: START -->
+                        <div class="glass-card rounded-3xl p-8 flex flex-col justify-between relative">
+                            <div>
+                                <h3 class="font-heading text-2xl font-bold text-white mb-2">START</h3>
+                                <p class="text-gray-400 text-xs mb-6">Boshlovchilar va mustaqil shug'ullanuvchilar uchun</p>
+                                
+                                <div class="mb-8">
+                                    <span class="font-heading text-4xl font-extrabold text-white price-value" data-monthly="350,000" data-annual="280,000">350,000</span>
+                                    <span class="text-gray-400 text-sm"> so'm / oy</span>
+                                </div>
+
+                                <ul class="space-y-4 text-sm text-gray-300 mb-8">
+                                    <li class="flex items-center gap-3">
+                                        <i class="fa-solid fa-check text-brand-neon"></i>
+                                        <span>Zalga kirish (08:00 - 17:00)</span>
+                                    </li>
+                                    <li class="flex items-center gap-3">
+                                        <i class="fa-solid fa-check text-brand-neon"></i>
+                                        <span>Barcha kardio va kuch trenajyorlari</span>
+                                    </li>
+                                    <li class="flex items-center gap-3">
+                                        <i class="fa-solid fa-check text-brand-neon"></i>
+                                        <span>Kiyinish xonasi va dush</span>
+                                    </li>
+                                    <li class="flex items-center gap-3 text-gray-500">
+                                        <i class="fa-solid fa-xmark"></i>
+                                        <span>Fin saunasi xizmati</span>
+                                    </li>
+                                    <li class="flex items-center gap-3 text-gray-500">
+                                        <i class="fa-solid fa-xmark"></i>
+                                        <span>Shaxsiy murabbiy ko'rsatmasi</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <button onclick="selectPlanAndScroll('START Tarif')" class="w-full py-4 rounded-xl font-bold border border-white/20 text-white hover:bg-white/10 transition-all">
+                                TANLASH
+                            </button>
+                        </div>
+
+                        <!-- Plan 2: STANDARD (POPULAR) -->
+                        <div class="glass-card rounded-3xl p-8 flex flex-col justify-between relative border-2 border-brand-neon shadow-neon-glow bg-brand-surface/80">
+                            <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-neon text-black font-extrabold text-xs px-4 py-1.5 rounded-full uppercase tracking-wider">
+                                ENG OMMABOP
+                            </div>
+
+                            <div>
+                                <h3 class="font-heading text-2xl font-bold text-white mb-2">STANDARD</h3>
+                                <p class="text-gray-400 text-xs mb-6">Cheklovlarsiz mashg'ulot olib boruvchilar uchun</p>
+                                
+                                <div class="mb-8">
+                                    <span class="font-heading text-4xl font-extrabold text-brand-neon price-value" data-monthly="550,000" data-annual="440,000">550,000</span>
+                                    <span class="text-gray-400 text-sm"> so'm / oy</span>
+                                </div>
+
+                                <ul class="space-y-4 text-sm text-gray-300 mb-8">
+                                    <li class="flex items-center gap-3">
+                                        <i class="fa-solid fa-check text-brand-neon"></i>
+                                        <span>24/7 Vaqt bo'yicha cheklov yo'q</span>
+                                    </li>
+                                    <li class="flex items-center gap-3">
+                                        <i class="fa-solid fa-check text-brand-neon"></i>
+                                        <span>Barcha zonalarga to'liq kirish</span>
+                                    </li>
+                                    <li class="flex items-center gap-3">
+                                        <i class="fa-solid fa-check text-brand-neon"></i>
+                                        <span>Fin Saunasidan bepul foydalanish</span>
+                                    </li>
+                                    <li class="flex items-center gap-3">
+                                        <i class="fa-solid fa-check text-brand-neon"></i>
+                                        <span>2 ta bepul murabbiy mashg'uloti</span>
+                                    </li>
+                                    <li class="flex items-center gap-3 text-gray-500">
+                                        <i class="fa-solid fa-xmark"></i>
+                                        <span>Shaxsiy VIP Shkafcha</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <button onclick="selectPlanAndScroll('STANDARD Tarif')" class="w-full py-4 rounded-xl font-bold bg-brand-neon text-black hover:bg-brand-neonHover shadow-neon-glow transition-all">
+                                HOZIR A'ZO BO'LISH
+                            </button>
+                        </div>
+
+                        <!-- Plan 3: VIP / PREMIUM -->
+                        <div class="glass-card rounded-3xl p-8 flex flex-col justify-between relative">
+                            <div>
+                                <h3 class="font-heading text-2xl font-bold text-white mb-2">PRO VIP</h3>
+                                <p class="text-gray-400 text-xs mb-6">Maksimal qulaylik va personal parvarish</p>
+                                
+                                <div class="mb-8">
+                                    <span class="font-heading text-4xl font-extrabold text-brand-cyan price-value" data-monthly="900,000" data-annual="720,000">900,000</span>
+                                    <span class="text-gray-400 text-sm"> so'm / oy</span>
+                                </div>
+
+                                <ul class="space-y-4 text-sm text-gray-300 mb-8">
+                                    <li class="flex items-center gap-3">
+                                        <i class="fa-solid fa-check text-brand-cyan"></i>
+                                        <span>24/7 To'liq va cheksiz kirish</span>
+                                    </li>
+                                    <li class="flex items-center gap-3">
+                                        <i class="fa-solid fa-check text-brand-cyan"></i>
+                                        <span>Shaxsiy Murabbiy (Cheksiz nazorat)</span>
+                                    </li>
+                                    <li class="flex items-center gap-3">
+                                        <i class="fa-solid fa-check text-brand-cyan"></i>
+                                        <span>Fit-Barda bepul proteyn va suv</span>
+                                    </li>
+                                    <li class="flex items-center gap-3">
+                                        <i class="fa-solid fa-check text-brand-cyan"></i>
+                                        <span>Alohida shaxsiy VIP Shkafcha</span>
+                                    </li>
+                                    <li class="flex items-center gap-3">
+                                        <i class="fa-solid fa-check text-brand-cyan"></i>
+                                        <span>Massaj xizmati (Oiga 2 marta)</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <button onclick="selectPlanAndScroll('PRO VIP Tarif')" class="w-full py-4 rounded-xl font-bold border border-brand-cyan/50 text-brand-cyan hover:bg-brand-cyan hover:text-black transition-all">
+                                VIP TARIFNI TANLASH
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <!-- REGISTRATION FORM SECTION -->
+                    <div class="max-w-3xl mx-auto glass-panel p-8 sm:p-12 rounded-3xl border border-white/15 shadow-2xl relative overflow-hidden" id="registrationFormSection">
+                        <div class="absolute -top-24 -right-24 w-60 h-60 bg-brand-neon/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                        <div class="text-center mb-8">
+                            <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-white">RO'YXATDAN O'TISH</h2>
+                            <p class="text-gray-400 text-sm mt-1">Ma'lumotlaringizni qoldiring va menejerimiz 15 daqiqada siz bilan bog'lanadi</p>
+                        </div>
+
+                        <form id="gymRegistrationForm" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                            
+                            <!-- Full Name Field -->
+                            <div>
+                                <label for="fullName" class="block text-xs font-bold text-gray-300 uppercase mb-2">Ism va Familiyangiz *</label>
+                                <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-gray-400 pointer-events-none">
+                                        <i class="fa-regular fa-user"></i>
+                                    </span>
+                                    <input type="text" id="fullName" required placeholder="Masalan: Jasur Rahimov" class="w-full pl-11 pr-4 py-3.5 bg-black/40 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-brand-neon focus:ring-1 focus:ring-brand-neon transition-all text-sm">
+                                </div>
+                            </div>
+
+                            <!-- Phone Number Field (+998 Masked) -->
+                            <div>
+                                <label for="phoneNumber" class="block text-xs font-bold text-gray-300 uppercase mb-2">Telefon Raqamingiz *</label>
+                                <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-gray-400 pointer-events-none">
+                                        <i class="fa-solid fa-phone"></i>
+                                    </span>
+                                    <input type="tel" id="phoneNumber" required value="+998 " placeholder="+998 90 123 45 67" class="w-full pl-11 pr-4 py-3.5 bg-black/40 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-brand-neon focus:ring-1 focus:ring-brand-neon transition-all text-sm font-mono">
+                                </div>
+                            </div>
+
+                            <!-- Selected Plan / Workout Dropdown -->
+                            <div class="grid sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="selectedPlan" class="block text-xs font-bold text-gray-300 uppercase mb-2">Tanlangan Tarif yoki Dastur</label>
+                                    <select id="selectedPlan" class="w-full px-4 py-3.5 bg-black/40 border border-white/10 rounded-xl text-white focus:outline-none focus:border-brand-neon transition-all text-sm appearance-none">
+                                        <option value="STANDARD Tarif" class="bg-brand-surface text-white">STANDARD Tarif</option>
+                                        <option value="START Tarif" class="bg-brand-surface text-white">START Tarif</option>
+                                        <option value="PRO VIP Tarif" class="bg-brand-surface text-white">PRO VIP Tarif</option>
+                                        <option value="Bepul Sinov Mashg'uloti" class="bg-brand-surface text-white">Bepul Sinov Mashg'uloti</option>
+                                        <option value="Boks va Yakkakurash" class="bg-brand-surface text-white">Boks va Yakkakurash</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label for="preferredTime" class="block text-xs font-bold text-gray-300 uppercase mb-2">Qulay Vaqt</label>
+                                    <select id="preferredTime" class="w-full px-4 py-3.5 bg-black/40 border border-white/10 rounded-xl text-white focus:outline-none focus:border-brand-neon transition-all text-sm appearance-none">
+                                        <option value="Ertalab (07:00 - 12:00)" class="bg-brand-surface text-white">Ertalab (07:00 - 12:00)</option>
+                                        <option value="Tushdan so'ng (12:00 - 17:00)" class="bg-brand-surface text-white">Tushdan so'ng (12:00 - 17:00)</option>
+                                        <option value="Kechqurun (17:00 - 22:00)" class="bg-brand-surface text-white">Kechqurun (17:00 - 22:00)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="submit" class="w-full py-4 rounded-xl font-bold bg-brand-neon text-black hover:bg-brand-neonHover shadow-neon-glow transition-all hover:scale-[1.01] active:scale-95 text-base flex items-center justify-center gap-2 mt-4">
+                                <span>RO'YXATDAN O'TISHNI TASDIQLASH</span>
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+
+                        </form>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-black border-t border-white/10 pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                
+                <!-- Col 1: Info -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-brand-neon flex items-center justify-center text-black font-extrabold text-xl">
+                            <i class="fa-solid fa-dumbbell"></i>
+                        </div>
+                        <span class="font-heading text-xl font-extrabold text-white">APEX<span class="text-brand-neon">FIT</span></span>
+                    </div>
+                    <p class="text-gray-400 text-xs leading-relaxed">O'zbekistondagi eng zamonaviy va yuqori darajadagi erkaklar fitnes va salomatlik klubi.</p>
+                </div>
+
+                <!-- Col 2: Navigation -->
+                <div>
+                    <h4 class="text-white font-bold text-sm uppercase mb-4 tracking-wider">Sahifalar</h4>
+                    <ul class="space-y-2 text-xs text-gray-400">
+                        <li><a href="#home" onclick="navigateTo('home')" class="hover:text-brand-neon transition-colors">Asosiy Sahifa</a></li>
+                        <li><a href="#workouts" onclick="navigateTo('workouts')" class="hover:text-brand-neon transition-colors">Mashg'ulot Turlari</a></li>
+                        <li><a href="#workouts" onclick="navigateTo('workouts')" class="hover:text-brand-neon transition-colors">Murabbiylar</a></li>
+                        <li><a href="#pricing" onclick="navigateTo('pricing')" class="hover:text-brand-neon transition-colors">A'zolik Narxlari</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Contact Info -->
+                <div>
+                    <h4 class="text-white font-bold text-sm uppercase mb-4 tracking-wider">Aloqa</h4>
+                    <ul class="space-y-3 text-xs text-gray-400">
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-location-dot text-brand-neon"></i>
+                            <span>Toshkent sh., Amir Temur shoh ko'chasi 108</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-brand-neon"></i>
+                            <span>+998 (71) 200-00-99</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-brand-neon"></i>
+                            <span>info@apexfit.uz</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Socials -->
+                <div>
+                    <h4 class="text-white font-bold text-sm uppercase mb-4 tracking-wider">Ijtimoiy Tarmoqlar</h4>
+                    <div class="flex items-center gap-3">
+                        <a href="#" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-brand-neon hover:text-black transition-all">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-brand-neon hover:text-black transition-all">
+                            <i class="fa-brands fa-telegram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-brand-neon hover:text-black transition-all">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+                <p>&copy; 2026 APEX FITNESS CLUB. Barcha huquqlar himoyalangan.</p>
+                <p>Designed with High-End Frontend Architecture</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SUCCESS MODAL (REGISTRATION NOTIFICATION) -->
+    <div id="successModal" class="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/80 backdrop-blur-md hidden transition-opacity duration-300">
+        <div class="glass-panel p-8 rounded-3xl max-w-md w-full border border-brand-neon/30 text-center relative transform transition-all scale-95">
+            <div class="w-16 h-16 rounded-full bg-brand-neon/20 border border-brand-neon text-brand-neon flex items-center justify-center text-3xl mx-auto mb-4">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 class="font-heading text-2xl font-bold text-white mb-2">Muvaffaqiyatli Yuborildi!</h3>
+            <p class="text-gray-300 text-sm mb-6" id="modalMessage">Arizangiz qabul qilindi. Tez orada operatorlarimiz siz bilan bog'lanishadi.</p>
+            <button onclick="closeSuccessModal()" class="w-full py-3 rounded-xl font-bold bg-brand-neon text-black hover:bg-brand-neonHover transition-all">
+                TUSHUNDIM
+            </button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT ARCHITECTURE -->
+    <script>
+        // State Management
+        let currentPage = 'home';
+        let isAnnualPricing = false;
+
+        // SPA Navigation Manager
+        function navigateTo(pageId) {
+            currentPage = pageId;
+            
+            // Hide all pages
+            document.querySelectorAll('.spa-page').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Show selected page
+            const activePage = document.getElementById(`page-${pageId}`);
+            if (activePage) {
+                activePage.classList.add('active');
+            }
+
+            // Update Header Nav Active Styles
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('text-brand-neon', 'bg-white/10');
+                btn.classList.add('text-gray-300');
+            });
+
+            const activeNavBtn = document.getElementById(`nav-${pageId}`);
+            if (activeNavBtn) {
+                activeNavBtn.classList.add('text-brand-neon', 'bg-white/10');
+                activeNavBtn.classList.remove('text-gray-300');
+            }
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Trigger Counters if home page
+            if (pageId === 'home') {
+                initCounters();
+            }
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Animated Counter Effect
+        function initCounters() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                let current = 0;
+                const increment = Math.ceil(target / 40);
+
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        counter.innerText = target;
+                        clearInterval(timer);
+                    } else {
+                        counter.innerText = current;
+                    }
+                }, 30);
+            });
+        }
+
+        // Workout Category Filter
+        function filterWorkouts(category) {
+            const buttons = document.querySelectorAll('#workoutFilters .filter-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-brand-neon', 'text-black', 'shadow-neon-glow');
+                btn.classList.add('glass-panel', 'text-gray-300');
+            });
+
+            event.target.classList.add('bg-brand-neon', 'text-black', 'shadow-neon-glow');
+            event.target.classList.remove('glass-panel', 'text-gray-300');
+
+            const cards = document.querySelectorAll('.workout-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Toggle Pricing Discount (Monthly vs Annual)
+        function togglePricingPeriod() {
+            isAnnualPricing = !isAnnualPricing;
+            const toggleCircle = document.getElementById('toggleCircle');
+            const monthlyLabel = document.getElementById('monthlyLabel');
+            const annualLabel = document.getElementById('annualLabel');
+            const priceValues = document.querySelectorAll('.price-value');
+
+            if (isAnnualPricing) {
+                toggleCircle.classList.add('translate-x-8');
+                monthlyLabel.classList.replace('text-white', 'text-gray-400');
+                annualLabel.classList.replace('text-gray-400', 'text-white');
+
+                priceValues.forEach(el => {
+                    el.innerText = el.getAttribute('data-annual');
+                });
+            } else {
+                toggleCircle.classList.remove('translate-x-8');
+                annualLabel.classList.replace('text-white', 'text-gray-400');
+                monthlyLabel.classList.replace('text-gray-400', 'text-white');
+
+                priceValues.forEach(el => {
+                    el.innerText = el.getAttribute('data-monthly');
+                });
+            }
+        }
+
+        // Select Plan & Auto Navigation
+        function selectPlanAndScroll(planName) {
+            navigateTo('pricing');
+            const selectEl = document.getElementById('selectedPlan');
+            if (selectEl) {
+                selectEl.value = planName;
+            }
+            const formSection = document.getElementById('registrationFormSection');
+            if (formSection) {
+                formSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Modal triggers
+        function openRegisterModal(planName) {
+            selectPlanAndScroll(planName);
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('successModal').classList.add('hidden');
+        }
+
+        // Form Submit Handler
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const fullName = document.getElementById('fullName').value;
+            const plan = document.getElementById('selectedPlan').value;
+
+            document.getElementById('modalMessage').innerHTML = `Rahmat, <strong>${fullName}</strong>! Standard so'rovingiz [<strong>${plan}</strong>] bo'yicha qabul qilindi. Tez orada mutaxassisimiz bog'lanadi.`;
+            document.getElementById('successModal').classList.remove('hidden');
+
+            // Reset Form
+            document.getElementById('gymRegistrationForm').reset();
+            document.getElementById('phoneNumber').value = "+998 ";
+        }
+
+        // Auto Phone Mask Helper
+        document.getElementById('phoneNumber')?.addEventListener('input', function(e) {
+            if (!this.value.startsWith('+998 ')) {
+                this.value = '+998 ';
+            }
+        });
+
+        // Initialize Page on Load
+        window.addEventListener('load', () => {
+            initCounters();
+        });
+    </script>
+</body>
+</html>
